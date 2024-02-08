@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  main {
+    @apply w-full max-w-2xl mx-auto mt-12 md:w-2/3;
+  }
+
+  h1 {
+    @apply text-4xl font-bold;
+  }
+
+  form {
+    @apply my-8;
+  }
+
+  fieldset {
+    @apply my-4;
+  }
+
+  input[type="text"],
+  textarea {
+    @apply block w-full px-3 py-2 border border-gray-200 rounded-md shadow outline-none;
+  }
+
+  button,
+  .btn,
+  a.btn {
+    @apply inline-block px-5 py-3 font-medium bg-gray-100 rounded-lg;
+  }
+
+  .btn-primary,
+  input[type="submit"] {
+    @apply inline-block px-5 py-3 font-medium text-white bg-blue-600 rounded-lg cursor-pointer;
+  }
+
+  #error_explanation {
+    @apply px-3 py-2 mt-3 font-medium text-red-500 rounded-lg bg-red-50;
+  }
+}

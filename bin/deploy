@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+require 'dotenv'
+require 'json'
+require 'pry'
+
+Dotenv.load
+
+id = JSON.parse(`curl -s -X POST https://app.hatchbox.io/webhooks/deployments/#{ENV["HATCHBOX_DEPLOY_KEY"]}?latest=true`)["id"]
+
+puts "Deployment started: https://app.hatchbox.io/apps/#{ENV["HATCHBOX_APP_ID"]}/logs/#{id}"

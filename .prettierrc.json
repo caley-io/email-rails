@@ -1,0 +1,34 @@
+{
+  "tabWidth": 2,
+  "useTabs": false,
+  "bracketSameLine": true,
+  "printWidth": 100,
+  "singleAttributePerLine": true,
+  "proseWrap": "always",
+  "overrides": [
+    {
+      "files": "*.erb",
+      "options": {
+        "parser": "html"
+      }
+    },
+    {
+      "files": "erb",
+      "options": {
+        "parser": "html"
+      }
+    },
+    {
+      "files": "*.html.erb",
+      "options": {
+        "parser": "html"
+      }
+    },
+    {
+      "files": "*.md.html",
+      "options": {
+        "parser": "markdown"
+      }
+    }
+  ]
+}
