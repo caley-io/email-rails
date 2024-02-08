@@ -1,1 +1,1 @@
-# avi.nyc Rails Base Template
+# Caley.io
