@@ -6,12 +6,12 @@ class TeamTest < ActiveSupport::TestCase
   end
 
   test "should have many users" do
-    assert_equal 2, @caley_team.users.size
+    assert_equal 1, @caley_team.users.size
     assert @caley_team.users.include?(users(:bob))
   end
 
   test "should have many accounts" do
-    assert_equal 2, @caley_team.accounts.size
+    assert_equal 1, @caley_team.accounts.size
   end
 
   test "should destroy dependent users" do

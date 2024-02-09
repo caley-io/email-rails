@@ -5,9 +5,9 @@ en:
       account:
         balance: Balance
         currency: Currency
-        team: Team
-        team_id: Team
         name: Name
         subtype: Subtype
+        team: Team
+        team_id: Team
     models:
       account: Account
