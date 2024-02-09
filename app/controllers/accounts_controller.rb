@@ -10,7 +10,6 @@ class AccountsController < ApplicationController
 
   def create
     @account = Current.team.accounts.build(account_params)
-    @account.accountable = account_params[:accountable_type].constantize.new
 
     if @account.save
       redirect_to accounts_path, notice: t(".success")
@@ -22,7 +21,7 @@ class AccountsController < ApplicationController
   private
 
   def account_params
-    params.require(:account).permit(:name, :accountable_type, :balance, :balance_cents, :subtype)
+    params.require(:account).permit(:name, :provider, :email, :type)
   end
 
   def account_type_class
