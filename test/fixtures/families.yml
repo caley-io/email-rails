@@ -1,0 +1,10 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+caley_team:
+  name: Caley
+
+google_team:
+  name: Google
+
+apple_team:
+  name: Apple
