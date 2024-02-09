@@ -5,8 +5,8 @@ class CreateAccounts < ActiveRecord::Migration[7.2]
       t.string :subtype
       t.references :team, null: false, foreign_key: true, type: :uuid
       t.string :name
-      t.bigint :balance, default: 0
-      t.string :currency, default: "USD"
+      t.string :provider, null: false
+      t.string :email, null: false
 
       t.timestamps
     end

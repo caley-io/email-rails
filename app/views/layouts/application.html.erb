@@ -69,10 +69,6 @@
             <%= lucide_icon("plus", class: "w-5 h-5") %>
             <p><%= t('.new_account') %></p>
           <% end %>
-
-          <% Account.accountable_types.each do |type| %>
-            <%= render 'accounts/account_list', type: type.constantize %>
-          <% end %>
         </div>
       </div>
       <main class="flex-grow py-5 pr-5">

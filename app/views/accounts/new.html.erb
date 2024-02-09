@@ -1,22 +1,13 @@
 <h1 class="text-3xl font-semibold font-display"><%= t('.title')%></h1>
 
 <%= modal do %>
-  <% if params[:type].blank? || Account.accountable_types.include?("Account::#{params[:type]}") == false %>
+  <% if params[:type].blank? %>
     <div class="border-b border-[#141414]/2 p-4 text-gray-400">
       What would you like to add?
     </div>
     <div class="flex flex-col p-2 text-sm" data-controller="list-keyboard-navigation">
       <button hidden data-controller="hotkey" data-hotkey="k,K,ArrowUp,ArrowLeft" data-action="list-keyboard-navigation#focusPrevious">Previous</button>
       <button hidden data-controller="hotkey" data-hotkey="j,J,ArrowDown,ArrowRight" data-action="list-keyboard-navigation#focusNext">Next</button>
-
-      <%= render "account_type", type: Account::Depository.new, bg_color: "bg-[#EFF8FF]", text_color: "text-[#2E90FA]", icon: "landmark" %>
-      <%= render "account_type", type: Account::Investment.new, bg_color: "bg-[#ECFDF3]", text_color: "text-[#32D583]", icon: "line-chart" %>
-      <%= render "account_type", type: Account::Property.new, bg_color: "bg-[#FCF5F9]", text_color: "text-[#F23E94]", icon: "home" %>
-      <%= render "account_type", type: Account::Vehicle.new, bg_color: "bg-[#EEF4FF]", text_color: "text-[#6172F3]", icon: "car-front" %>
-      <%= render "account_type", type: Account::Credit.new, bg_color: "bg-[#F0F9FF]", text_color: "text-[#36BFFA]", icon: "credit-card" %>
-      <%= render "account_type", type: Account::Loan.new, bg_color: "bg-[#FEF6EE]", text_color: "text-[#F38744]", icon: "hand-coins" %>
-      <%= render "account_type", type: Account::OtherAsset.new, bg_color: "bg-[#ECFDF3]", text_color: "text-[#12B76A]", icon: "plus" %>
-      <%= render "account_type", type: Account::OtherLiability.new, bg_color: "bg-[#FEF3F2]", text_color: "text-[#F04438]", icon: "minus" %>
     </div>
     <div class="border-t border-[#141414]/2 p-4 text-gray-500 text-sm flex justify-between">
       <div class="flex space-x-5">
@@ -41,10 +32,6 @@
     <div class="flex flex-col p-2 text-sm" data-controller="list-keyboard-navigation">
       <button hidden data-controller="hotkey" data-hotkey="k,K,ArrowUp,ArrowLeft" data-action="list-keyboard-navigation#focusPrevious">Previous</button>
       <button hidden data-controller="hotkey" data-hotkey="j,J,ArrowDown,ArrowRight" data-action="list-keyboard-navigation#focusNext">Next</button>
-
-      <%= render "entry_method", type: Account::Depository.new, text: 'Enter account balance manually', icon: "keyboard" %>
-      <%= render "entry_method", type: Account::Depository.new, text: 'Securely link bank account with data provider (coming soon)', icon: "link-2", disabled: true %>
-      <%= render "entry_method", type: Account::Depository.new, text: 'Upload spreadsheet (coming soon)', icon: "sheet", disabled: true %>
     </div>
     <div class="border-t border-[#141414]/2 p-4 text-gray-500 text-sm flex justify-between">
       <div class="flex space-x-5">
@@ -68,20 +55,9 @@
     </div>
 
     <%= form_with model: @account, url: accounts_path, scope: :account, html: { class: "space-y-4 m-5 mt-1", data: { turbo: false } } do |f| %>
-      <%= f.hidden_field :accountable_type %>
-
       <div class="relative p-3 border border-[#141414]/8 bg-white rounded-xl focus-within:bg-white focus-within:shadow-none focus-within:border-gray-900 focus-within:ring-4 focus-within:ring-gray-100 focus-within:opacity-100 shadow-sm">
         <%= f.label :name, 'Account name', class: 'block text-sm font-medium opacity-50 focus-within:opacity-100'  %>
         <%= f.text_field :name, placeholder: 'Example account name', required: 'required', class: "p-0 mt-1 bg-transparent border-none opacity-50 focus:outline-none focus:ring-0 focus-within:opacity-100" %>
-      </div>
-
-      <%= render "accounts/#{permitted_accountable_partial(@account.accountable_type)}", f: f %>
-
-      <div class="relative p-3 border border-[#141414]/8 bg-white rounded-xl focus-within:bg-white focus-within:shadow-none focus-within:border-gray-900 focus-within:ring-4 focus-within:ring-gray-100 focus-within:opacity-100 shadow-sm">
-        <%= f.label :balance, class: 'block text-sm font-medium opacity-50 focus-within:opacity-100' %>
-        <div class="flex">
-          <%= f.number_field :balance, placeholder: number_to_currency(0), in: 0.00..100000000.00, required: 'required', class: "p-0 mt-1 bg-transparent border-none opacity-50 focus:outline-none focus:ring-0 focus-within:opacity-100 w-full" %>
-        </div>
       </div>
 
       <div class="">

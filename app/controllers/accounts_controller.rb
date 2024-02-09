@@ -2,15 +2,7 @@ class AccountsController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    if params[:type].blank? || Account.accountable_types.include?("Account::#{params[:type]}")
-      @account = if params[:type].blank?
-        Account.new
-      else
-        Account.new(accountable_type: "Account::#{params[:type]}", balance: nil)
-      end
-    else
-      head :not_found
-    end
+    Account.new
   end
 
   def show
@@ -34,10 +26,6 @@ class AccountsController < ApplicationController
   end
 
   def account_type_class
-    if params[:type].present? && Account.accountable_types.include?(params[:type])
-      params[:type].constantizes
-    else
       Account # Default to Account if type is not provided or invalid
-    end
   end
 end
