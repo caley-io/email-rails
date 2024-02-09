@@ -2,7 +2,6 @@ require "test_helper"
 
 class AccountTest < ActiveSupport::TestCase
   def setup
-    depository = Account::Depository.create!
     @account = Account.create!(team: teams(:caley_team), name: "Google", provider: "Google", email: "jeremy@caley.io")
   end
 

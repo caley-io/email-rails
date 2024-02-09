@@ -4,9 +4,9 @@ en:
     attributes:
       user:
         email: Email
-        team: Team
-        team_id: Team
         first_name: First Name
         last_name: Last Name
         password: Password
         password_confirmation: Password Confirmation
+        team: Team
+        team_id: Team
