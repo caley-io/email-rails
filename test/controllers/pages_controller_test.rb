@@ -5,7 +5,7 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     sign_in users(:bob)
   end
 
-  test "dashboard" do
+  test "inbox" do
     get root_path
     assert_response :ok
   end

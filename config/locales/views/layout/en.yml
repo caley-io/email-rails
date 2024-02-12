@@ -3,7 +3,16 @@ en:
   layouts:
     application:
       accounts: Accounts
-      dashboard: Dashboard
+      inbox: Inbox
+      done: Done
+      team: Team
+      calendar: Calendar
+      vip: VIP
+      sent: Sent
+      later: Send Later
+      draft: Draft
+      archive: Archive
+      trash: Trash
       new_account: New account
     auth:
       or: or

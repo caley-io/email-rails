@@ -1,5 +1,23 @@
 ---
 en:
   pages:
-    dashboard:
-      title: Dashboard
+    inbox:
+      title: Inbox
+    done:
+      title: Done
+    team:
+      title: Team
+    calendar:
+      title: Calendar
+    vip:
+      title: VIP
+    sent:
+      title: Sent
+    later:
+      title: Send Later
+    draft:
+      title: Draft
+    archive:
+      title: Archive
+    trash:
+      title: Trash
