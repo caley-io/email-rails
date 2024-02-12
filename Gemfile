@@ -29,6 +29,7 @@ gem "inline_svg"
 gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "money-rails", "~> 1.12"
+gem "net-imap"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]

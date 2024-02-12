@@ -1,0 +1,11 @@
+    
+<ul class="divide-y divide-gray-200 px-4">
+  <% emails.each do |email| %>
+    <li class="py-4">
+      <p><strong>From:</strong> <%= email[:from].presence || "Unknown" %></p>
+      <p><strong>To:</strong> <%= email[:to].presence || "Unknown" %></p>
+      <p><strong>Date:</strong> <%= email[:date].presence || "Unknown" %></p>
+      <p><strong>Subject:</strong> <%= email[:subject].presence || "No Subject" %></p>
+    </li>
+  <% end %>
+</ul>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_02_03_050018) do
+ActiveRecord::Schema[7.2].define(version: 2024_02_12_120134) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -23,6 +23,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_02_03_050018) do
     t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "imap_server"
+    t.integer "imap_port"
+    t.boolean "imap_ssl"
+    t.string "password"
     t.index ["team_id"], name: "index_accounts_on_team_id"
   end
 
