@@ -23,9 +23,12 @@
     <%= yield :head %>
   </head>
 
-  <body class="h-screen">
-    <div class="flex">
-      <div class="flex-col p-5 min-w-80 border-r h-screen">
+  <body data-controller="theme"
+        data-theme-target="body"
+        class="h-screen">
+    <div class="flex dark:text-white dark:bg-darkBackground">
+      <div class="flex-col p-5 min-w-80 border-r h-screen
+                  dark:border-darkBorder">
         <div class="flex items-center justify-between">
           <%= link_to root_path do %>
             <%= image_tag 'logo.svg', alt: 'Caley.io' %>
@@ -44,68 +47,20 @@
 
           </div>
         </div>
+        <button data-action="click->theme#toggle">toggle</button>
         <nav>
           <ul class="mt-6 space-y-2">
-            <li>
-              <%= link_to root_path, class: 'block hover:bg-gray-100 -ml-2 p-2 text-sm font-semibold text-gray-900 flex items-center rounded' do %>
-                <%= lucide_icon('inbox', class: 'text-black stroke-current mr-2 w-5 h-5') %>
-                <%= t('.inbox') %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to done_path, class: 'block hover:bg-gray-100 -ml-2 p-2 text-sm font-semibold text-gray-900 flex items-center rounded' do %>
-                <%= lucide_icon('check-circle', class: 'text-black stroke-current mr-2 w-5 h-5') %>
-                <%= t('.done') %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to team_path, class: 'block hover:bg-gray-100 -ml-2 p-2 text-sm font-semibold text-gray-900 flex items-center rounded' do %>
-                <%= lucide_icon('building', class: 'text-black stroke-current mr-2 w-5 h-5') %>
-                <%= t('.team') %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to calendar_path, class: 'block hover:bg-gray-100 -ml-2 p-2 text-sm font-semibold text-gray-900 flex items-center rounded' do %>
-                <%= lucide_icon('calendar', class: 'text-black stroke-current mr-2 w-5 h-5') %>
-                <%= t('.calendar') %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to vip_path, class: 'block hover:bg-gray-100 -ml-2 p-2 text-sm font-semibold text-gray-900 flex items-center rounded' do %>
-                <%= lucide_icon('star', class: 'text-black stroke-current mr-2 w-5 h-5') %>
-                <%= t('.vip') %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to sent_path, class: 'block hover:bg-gray-100 -ml-2 p-2 text-sm font-semibold text-gray-900 flex items-center rounded' do %>
-                <%= lucide_icon('send', class: 'text-black stroke-current mr-2 w-5 h-5') %>
-                <%= t('.sent') %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to later_path, class: 'block hover:bg-gray-100 -ml-2 p-2 text-sm font-semibold text-gray-900 flex items-center rounded' do %>
-                <%= lucide_icon('calendar-clock', class: 'text-black stroke-current mr-2 w-5 h-5') %>
-                <%= t('.later') %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to draft_path, class: 'block hover:bg-gray-100 -ml-2 p-2 text-sm font-semibold text-gray-900 flex items-center rounded' do %>
-                <%= lucide_icon('file', class: 'text-black stroke-current mr-2 w-5 h-5') %>
-                <%= t('.draft') %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to archive_path, class: 'block hover:bg-gray-100 -ml-2 p-2 text-sm font-semibold text-gray-900 flex items-center rounded' do %>
-                <%= lucide_icon('archive', class: 'text-black stroke-current mr-2 w-5 h-5') %>
-                <%= t('.archive') %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to trash_path, class: 'block hover:bg-gray-100 -ml-2 p-2 text-sm font-semibold text-gray-900 flex items-center rounded' do %>
-                <%= lucide_icon('trash-2', class: 'text-black stroke-current mr-2 w-5 h-5') %>
-                <%= t('.trash') %>
-              <% end %>
-            </li>
+            <%= render 'shared/navigation/link', path: root_path, title: '.inbox', icon: 'inbox', active: true %>
+            <!--TODO: Fix the active state-->
+            <%= render 'shared/navigation/link', path: done_path, title: '.done', icon: 'check-circle', active: false %>
+            <%= render 'shared/navigation/link', path: team_path, title: '.team', icon: 'building', active: false %>
+            <%= render 'shared/navigation/link', path: calendar_path, title: '.calendar', icon: 'calendar', active: false %>
+            <%= render 'shared/navigation/link', path: vip_path, title: '.vip', icon: 'star', active: false %>
+            <%= render 'shared/navigation/link', path: sent_path, title: '.sent', icon: 'send', active: true %>
+            <%= render 'shared/navigation/link', path: later_path, title: '.later', icon: 'calendar-clock', active: false %>
+            <%= render 'shared/navigation/link', path: draft_path, title: '.draft', icon: 'file', active: false %>
+            <%= render 'shared/navigation/link', path: archive_path, title: '.archive', icon: 'archive', active: false %>
+            <%= render 'shared/navigation/link', path: root_path, title: '.trash', icon: 'trash-2', active: true %>
           </ul>
         </nav>
         <div class="flex flex-col mt-6">

@@ -7,6 +7,7 @@ module.exports = {
     './app/javascript/**/*.js',
     './app/views/**/*.{erb,haml,html,slim}'
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
@@ -18,6 +19,10 @@ module.exports = {
       colors: {
         black: '#242629',
         offwhite: '#F9FAFB',
+        darkBackground: '#111214',
+        darkBorder: '#1A1A1C',
+        darkHighlight: '#1A1A1C',
+        darkText: '#a3a3a3'
       },
       dropShadow: {
         'form': '0px 4px 10px rgba(52, 54, 60, 0.08)',
@@ -26,6 +31,9 @@ module.exports = {
         'xs': '0px 1px 2px 0px #1018280D'
       }
     },
+  },
+  options: {
+    safelist: ['dark', 'light']
   },
   plugins: [
     require('@tailwindcss/forms'),
