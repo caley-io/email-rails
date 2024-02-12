@@ -1,23 +1,23 @@
 ---
 en:
   pages:
-    inbox:
-      title: Inbox
-    done:
-      title: Done
-    team:
-      title: Team
-    calendar:
-      title: Calendar
-    vip:
-      title: VIP
-    sent:
-      title: Sent
-    later:
-      title: Send Later
-    draft:
-      title: Draft
     archive:
       title: Archive
+    calendar:
+      title: Calendar
+    done:
+      title: Done
+    draft:
+      title: Draft
+    inbox:
+      title: Inbox
+    later:
+      title: Send Later
+    sent:
+      title: Sent
+    team:
+      title: Team
     trash:
       title: Trash
+    vip:
+      title: VIP
