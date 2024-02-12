@@ -3,7 +3,7 @@
 <img width="2310" alt="Screenshot 2023-12-29 at 14 33 35" src="https://github.com/caley-io/caley/assets/15782436/274f1430-8eb5-4650-98f2-debdfec4a8e9">
 
 
-<b>Get involved: [Discord](https://discord.gg/4B6QWxv2) • [Website](https://caley.io) • [Issues](https://github.com/caley-io/caley/issues)</b>
+<b>Get involved: [Discord](https://discord.gg/caley) • [Website](https://caley.io) • [Issues](https://github.com/caley-io/caley/issues)</b>
 
 ## The Product
 
