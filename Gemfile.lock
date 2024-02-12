@@ -397,6 +397,7 @@ DEPENDENCIES
   letter_opener
   lucide-rails!
   money-rails (~> 1.12)
+  net-imap
   pg (~> 1.1)
   propshaft
   puma (>= 5.0)

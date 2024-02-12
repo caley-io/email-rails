@@ -1,1 +1,10 @@
-<h1 class="text-3xl font-semibold font-display"><%= t('.title')%></h1>
+<div class="px-4">
+  <h1 class="text-3xl font-semibold font-display"><%= t('.title') %></h1>
+  <% if @account.blank? %>
+    <p>Connect your email account to get started.</p>
+  <% elsif @emails.any? %>
+    <%= render partial: "emails_list", locals: { emails: @emails } %>
+  <% else %>
+    <p>No emails found.</p>
+  <% end %>
+</div>
