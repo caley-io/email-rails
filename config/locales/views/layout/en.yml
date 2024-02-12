@@ -3,8 +3,17 @@ en:
   layouts:
     application:
       accounts: Accounts
-      dashboard: Dashboard
+      archive: Archive
+      calendar: Calendar
+      done: Done
+      draft: Draft
+      inbox: Inbox
+      later: Send Later
       new_account: New account
+      sent: Sent
+      team: Team
+      trash: Trash
+      vip: VIP
     auth:
       or: or
       privacy_policy: Privacy Policy

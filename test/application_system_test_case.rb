@@ -12,6 +12,6 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
       fill_in "Password", with: "password"
       click_button "Log in"
     end
-    assert_text "Dashboard"
+    assert_text "Inbox"
   end
 end

@@ -26,5 +26,15 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Defines the root path route ("/")
-  root "pages#dashboard"
+  root "pages#inbox"
+
+  get "done" => "pages#done", as: :done
+  get "team" => "pages#team", as: :team
+  get "calendar" => "pages#calendar", as: :calendar
+  get "vip" => "pages#vip", as: :vip
+  get "sent" => "pages#sent", as: :sent
+  get "later" => "pages#later", as: :later
+  get "draft" => "pages#draft", as: :draft
+  get "archive" => "pages#archive", as: :archive
+  get "trash" => "pages#trash", as: :trash
 end
