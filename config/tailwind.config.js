@@ -31,9 +31,8 @@ module.exports = {
         },
         highlight: {
           light: '#eaeaea',
-          dark: '#212123'
+          dark: '#262626'
         },
-        black: '#242629',
         offwhite: '#F9FAFB'
       },
       dropShadow: {
