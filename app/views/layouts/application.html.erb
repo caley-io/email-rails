@@ -34,7 +34,7 @@
         <%= render 'shared/modals/workspace_settings' %>
         <nav>
           <ul class="mt-6 space-y-1">
-            <%= render 'shared/navigation/link', path: root_path, title: '.inbox', icon: 'inbox', active: true %>
+            <%= render 'shared/navigation/link', path: root_path, title: t('.inbox'), icon: 'inbox', active: true %>
             <!--TODO: Fix the active state-->
             <%= render 'shared/navigation/link', path: done_path, title: t('.done'), icon: 'check-circle', active: false %>
             <%= render 'shared/navigation/link', path: team_path, title: t('.team'), icon: 'building', active: false %>
