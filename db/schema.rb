@@ -27,14 +27,14 @@ ActiveRecord::Schema[7.2].define(version: 2024_02_12_120134) do
     t.integer "imap_port"
     t.boolean "imap_ssl"
     t.string "password"
-    t.index [ "team_id" ], name: "index_accounts_on_team_id"
+    t.index ["team_id"], name: "index_accounts_on_team_id"
   end
 
   create_table "invite_codes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "token", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index [ "token" ], name: "index_invite_codes_on_token", unique: true
+    t.index ["token"], name: "index_invite_codes_on_token", unique: true
   end
 
   create_table "teams", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -51,7 +51,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_02_12_120134) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index [ "team_id" ], name: "index_users_on_team_id"
+    t.index ["team_id"], name: "index_users_on_team_id"
   end
 
   add_foreign_key "accounts", "teams"
