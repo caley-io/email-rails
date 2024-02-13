@@ -1,6 +1,6 @@
 <li>
-  <%= link_to path, class: 'group block hover:bg-gray-100 dark:hover:bg-darkHighlight -ml-2 p-2 text-sm font-semibold text-gray-900 dark:text-darkText dark:hover:text-white flex items-center rounded' do %>
-    <%= lucide_icon(icon, class: 'text-black dark:text-darkText dark:group-hover:text-white stroke-current mr-2 w-5 h-5') %>
+  <%= link_to path, class: 'group block hover:bg-highlight-light dark:hover:bg-highlight-dark p-2 text-sm font-semibold text-heading-light dark:text-heading-dark dark:hover:text-white flex items-center rounded-lg' do %>
+    <%= lucide_icon(icon, class: 'text-black dark:text-heading-dark dark:group-hover:text-white stroke-current mr-2 w-5 h-5') %>
     <%= t(title.to_s) %>
   <% end %>
 </li>
