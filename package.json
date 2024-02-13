@@ -10,8 +10,5 @@
     "type": "git",
     "url": "https://github.com/caley-io/caley.git"
   },
-  "private": true,
-  "dependencies": {
-    "@hotwired/stimulus": "^3.2.2"
-  }
+  "private": true
 }
