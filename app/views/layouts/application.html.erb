@@ -23,92 +23,37 @@
     <%= yield :head %>
   </head>
 
-  <body class="h-screen">
-    <div class="flex">
-      <div class="flex-col p-5 min-w-80 border-r h-screen">
-        <div class="flex items-center justify-between">
-          <%= link_to root_path do %>
-            <%= image_tag 'logo.svg', alt: 'Caley.io' %>
-          <% end %>
-          <div class="relative cursor-pointer" data-controller="dropdown">
-            <div class="flex" data-action="click->dropdown#toggleMenu">
-              <div class="mr-1.5 text-white w-8 h-8 bg-gray-400 rounded-full flex items-center justify-center text-lg uppercase"><%= Current.user.email.first %></div>
-            </div>
-
-            <div class="absolute z-10 hidden w-screen px-2 mt-2 -translate-x-1/2 left-1/2 max-w-min" data-dropdown-target="menu">
-              <div class="w-48 px-3 text-sm font-semibold leading-6 text-gray-900 bg-white shadow-lg shrink rounded-xl ring-1 ring-gray-900/5">
-                <%= link_to "Settings", edit_settings_path, class: 'block p-2 hover:text-gray-600' %>
-                <%= button_to "Log Out", session_path, method: :delete, class: 'block p-2 hover:text-gray-600' %>
-              </div>
-            </div>
-
-          </div>
-        </div>
+  <body data-controller="theme"
+        data-theme-target="body"
+        class="h-screen">
+    <div data-controller="navbar"
+         class="flex dark:text-white bg-background-light dark:bg-background-dark">
+      <div class="flex-col p-2 min-w-72 border-r border-border-light h-screen
+                  dark:border-border-dark">
+        <%= render 'shared/navigation/workspace_switcher' %>
+        <%= render 'shared/modals/workspace_settings' %>
         <nav>
-          <ul class="mt-6 space-y-2">
+          <ul class="mt-6 space-y-1">
+            <%= render 'shared/navigation/link', path: root_path, title: t('.inbox'), icon: 'inbox', active: true %>
+            <!--TODO: Fix the active state-->
+            <%= render 'shared/navigation/link', path: done_path, title: t('.done'), icon: 'check-circle', active: false %>
+            <%= render 'shared/navigation/link', path: team_path, title: t('.team'), icon: 'building', active: false %>
+            <%= render 'shared/navigation/link', path: calendar_path, title: t('.calendar'), icon: 'calendar', active: false %>
+            <%= render 'shared/navigation/link', path: vip_path, title: t('.vip'), icon: 'star', active: false %>
+            <%= render 'shared/navigation/link', path: sent_path, title: t('.sent'), icon: 'send', active: true %>
+            <%= render 'shared/navigation/link', path: later_path, title: t('.later'), icon: 'calendar-clock', active: false %>
+            <%= render 'shared/navigation/link', path: draft_path, title: t('.draft'), icon: 'file', active: false %>
+            <%= render 'shared/navigation/link', path: archive_path, title: t('.archive'), icon: 'archive', active: false %>
+            <!--TODO: create trash_path view and replace with partial-->
             <li>
-              <%= link_to root_path, class: 'block hover:bg-gray-100 -ml-2 p-2 text-sm font-semibold text-gray-900 flex items-center rounded' do %>
-                <%= lucide_icon('inbox', class: 'text-black stroke-current mr-2 w-5 h-5') %>
-                <%= t('.inbox') %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to done_path, class: 'block hover:bg-gray-100 -ml-2 p-2 text-sm font-semibold text-gray-900 flex items-center rounded' do %>
-                <%= lucide_icon('check-circle', class: 'text-black stroke-current mr-2 w-5 h-5') %>
-                <%= t('.done') %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to team_path, class: 'block hover:bg-gray-100 -ml-2 p-2 text-sm font-semibold text-gray-900 flex items-center rounded' do %>
-                <%= lucide_icon('building', class: 'text-black stroke-current mr-2 w-5 h-5') %>
-                <%= t('.team') %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to calendar_path, class: 'block hover:bg-gray-100 -ml-2 p-2 text-sm font-semibold text-gray-900 flex items-center rounded' do %>
-                <%= lucide_icon('calendar', class: 'text-black stroke-current mr-2 w-5 h-5') %>
-                <%= t('.calendar') %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to vip_path, class: 'block hover:bg-gray-100 -ml-2 p-2 text-sm font-semibold text-gray-900 flex items-center rounded' do %>
-                <%= lucide_icon('star', class: 'text-black stroke-current mr-2 w-5 h-5') %>
-                <%= t('.vip') %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to sent_path, class: 'block hover:bg-gray-100 -ml-2 p-2 text-sm font-semibold text-gray-900 flex items-center rounded' do %>
-                <%= lucide_icon('send', class: 'text-black stroke-current mr-2 w-5 h-5') %>
-                <%= t('.sent') %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to later_path, class: 'block hover:bg-gray-100 -ml-2 p-2 text-sm font-semibold text-gray-900 flex items-center rounded' do %>
-                <%= lucide_icon('calendar-clock', class: 'text-black stroke-current mr-2 w-5 h-5') %>
-                <%= t('.later') %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to draft_path, class: 'block hover:bg-gray-100 -ml-2 p-2 text-sm font-semibold text-gray-900 flex items-center rounded' do %>
-                <%= lucide_icon('file', class: 'text-black stroke-current mr-2 w-5 h-5') %>
-                <%= t('.draft') %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to archive_path, class: 'block hover:bg-gray-100 -ml-2 p-2 text-sm font-semibold text-gray-900 flex items-center rounded' do %>
-                <%= lucide_icon('archive', class: 'text-black stroke-current mr-2 w-5 h-5') %>
-                <%= t('.archive') %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to trash_path, class: 'block hover:bg-gray-100 -ml-2 p-2 text-sm font-semibold text-gray-900 flex items-center rounded' do %>
-                <%= lucide_icon('trash-2', class: 'text-black stroke-current mr-2 w-5 h-5') %>
-                <%= t('.trash') %>
+              <%= link_to root_path, class: "group block hover:bg-highlight-light dark:hover:bg-highlight-dark px-2 py-2.5 text-sm font-medium text-heading-light dark:text-heading-dark dark:hover:text-white flex items-center rounded-md" do %>
+                <%= lucide_icon("trash", class: 'text-black dark:text-heading-dark dark:group-hover:text-white stroke-current mr-2 w-4 h-4') %>
+                <%= t(".trash") %>
               <% end %>
             </li>
           </ul>
         </nav>
-        <div class="flex flex-col mt-6">
+        <div class="flex flex-col mt-6 px-2">
           <div class="flex items-center justify-between">
             <%= link_to accounts_path, class: 'text-xs uppercase text-[#737373] font-bold tracking-wide' do%>
               <%= t('.accounts') %>

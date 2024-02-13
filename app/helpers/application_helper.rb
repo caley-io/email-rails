@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def active_page?(link_path)
+    current_page?(link_path) ? "bg-highlight-light dark:bg-highlight-dark dark:text-white" : ""
+  end
+
   def title(page_title)
     content_for(:title) { page_title }
   end

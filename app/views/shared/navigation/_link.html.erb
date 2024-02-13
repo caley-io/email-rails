@@ -1,0 +1,6 @@
+<li>
+  <%= link_to path, class: "group block #{active_page?(path)} hover:bg-highlight-light dark:hover:bg-highlight-dark px-2 py-2.5 text-sm font-medium text-heading-light dark:text-heading-dark dark:hover:text-white flex items-center rounded-md" do %>
+    <%= lucide_icon(icon, class: 'text-black dark:text-heading-dark dark:group-hover:text-white stroke-current mr-2 w-4 h-4') %>
+    <%= t(title.to_s) %>
+  <% end %>
+</li>
