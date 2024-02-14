@@ -10,4 +10,12 @@ class User < ApplicationRecord
   generates_token_for :password_reset, expires_in: 15.minutes do
     password_salt&.last(10)
   end
+
+  before_save :postfix_email
+
+  private
+
+  def postfix_email
+    self.email = "#{email}@caley.io" unless email.include?("@caley.io")
+  end
 end
