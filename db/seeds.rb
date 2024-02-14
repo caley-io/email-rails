@@ -12,6 +12,6 @@
 team = Team.create_or_find_by!(name: "Caley")
 puts "Team created: #{team.name}"
 user = User.create_or_find_by!(
-  first_name: "Jeremy", last_name: "Caley", email: "user@caley.local",
+  first_name: "Jeremy", last_name: "Caley", email: "jeremy",
   password: "password", password_confirmation: "password", team_id: team.id)
 puts "User created: #{user.email} for team: #{team.name}"
