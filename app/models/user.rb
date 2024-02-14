@@ -11,9 +11,16 @@ class User < ApplicationRecord
     password_salt&.last(10)
   end
 
+  validate :validate_email_format, on: [ :create, :update ]
   before_save :postfix_email
 
   private
+
+  def validate_email_format
+    if email.include?("@")
+      errors.add(:email, "must not include an '@' symbol followed by the domain name")
+    end
+  end
 
   def postfix_email
     self.email = "#{email}@caley.io" unless email.include?("@caley.io")
