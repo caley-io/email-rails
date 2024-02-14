@@ -6,7 +6,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   private
 
   def sign_in(user)
-    visit new_session_path
+    visit new_sessions_path
     within "form" do
       fill_in "Email", with: user.email
       fill_in "Password", with: "password"

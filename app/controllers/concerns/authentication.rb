@@ -11,7 +11,7 @@ module Authentication
     if user = User.find_by(id: session[:user_id])
       Current.user = user
     else
-      redirect_to new_session_url
+      redirect_to new_sessions_url
     end
   end
 

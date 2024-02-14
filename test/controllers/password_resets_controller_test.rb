@@ -25,6 +25,6 @@ class PasswordResetsControllerTest < ActionDispatch::IntegrationTest
   test "update" do
     patch password_reset_path(token: @user.generate_token_for(:password_reset)),
       params: { user: { password: "password", password_confirmation: "password" } }
-    assert_redirected_to new_session_url
+    assert_redirected_to new_sessions_url
   end
 end

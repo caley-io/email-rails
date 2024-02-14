@@ -3,7 +3,7 @@
   <% if @account.blank? %>
     <p>Connect your email account to get started.</p>
   <% elsif @emails.any? %>
-    <%= render partial: "emails_list", locals: { emails: @emails } %>
+    <%= render partial: "email_list", locals: { emails: @emails } %>
   <% else %>
     <p>No emails found.</p>
   <% end %>

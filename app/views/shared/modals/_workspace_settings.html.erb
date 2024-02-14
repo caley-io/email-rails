@@ -15,7 +15,7 @@
     </div>
     <div>
       <div class="flex items-center justify-between p-1 dark:bg-neutral-600/20 rounded-b-lg">
-        <%= button_to "Log Out", session_path, method: :delete, class: 'block px-2 py-1.5 text-xs dark:text-white hover:text-red-400 dark:hover:text-red-300 hover:bg-red-100/40 dark:hover:bg-red-100/20 rounded' %>
+        <%= button_to "Log Out", sessions_url, method: :delete, class: 'block px-2 py-1.5 text-xs dark:text-white hover:text-red-400 dark:hover:text-red-300 hover:bg-red-100/40 dark:hover:bg-red-100/20 rounded' %>
         <div class="flex items-center gap-x-0.5">
           <div>
             <%= render 'shared/icons/sun_theme_toggle' %>

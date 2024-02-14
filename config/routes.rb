@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resource :registration
-  resource :session
+  resource :sessions
   resource :password_reset
   resource :password
   resource :settings, only: %i[edit update]
