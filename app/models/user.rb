@@ -6,8 +6,6 @@ class User < ApplicationRecord
   has_many :teams_users
   has_many :teams, through: :teams_users
 
-  accepts_nested_attributes_for :team
-
   validates :email, presence: true, uniqueness: true
   normalizes :email, with: ->(email) { email.strip.downcase }
 

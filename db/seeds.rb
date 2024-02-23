@@ -9,9 +9,13 @@
 #   end
 
 # Create the default user
-team = Team.create_or_find_by!(name: "Caley")
-puts "Team created: #{team.name}"
 user = User.create_or_find_by!(
   first_name: "Jeremy", last_name: "Caley", email: "jeremy",
-  password: "password", password_confirmation: "password", team_id: team.id)
-puts "User created: #{user.email} for team: #{team.name}"
+  password: "password", password_confirmation: "password"
+)
+
+user.workspaces.create_or_find_by!(name: "Caley", owner_id: user.id)
+puts "Workspace created: #{user.workspaces.first.name}"
+
+user.teams.create_or_find_by!(name: "Caley", workspace_id: user.workspaces.first.id)
+puts "Team created: #{user.teams.first.name}"
