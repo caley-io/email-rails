@@ -27,49 +27,7 @@
         data-theme-target="body"
         class="h-screen">
     <div data-controller="navbar"
-         class="flex dark:text-white bg-background-light dark:bg-background-dark">
-      <div class="flex-col p-2 min-w-72 border-r border-border-light h-screen
-                  dark:border-border-dark">
-        <%= render 'shared/navigation/workspace_switcher' %>
-        <%= render 'shared/modals/workspace_settings' %>
-        <nav>
-          <ul class="mt-6 space-y-1">
-            <%= render 'shared/navigation/link', path: root_path, title: t('.inbox'), icon: 'inbox', active: true %>
-            <!--TODO: Fix the active state-->
-            <%= render 'shared/navigation/link', path: done_path, title: t('.done'), icon: 'check-circle', active: false %>
-            <%= render 'shared/navigation/link', path: team_path, title: t('.team'), icon: 'building', active: false %>
-            <%= render 'shared/navigation/link', path: calendar_path, title: t('.calendar'), icon: 'calendar', active: false %>
-            <%= render 'shared/navigation/link', path: vip_path, title: t('.vip'), icon: 'star', active: false %>
-            <%= render 'shared/navigation/link', path: sent_path, title: t('.sent'), icon: 'send', active: true %>
-            <%= render 'shared/navigation/link', path: later_path, title: t('.later'), icon: 'calendar-clock', active: false %>
-            <%= render 'shared/navigation/link', path: draft_path, title: t('.draft'), icon: 'file', active: false %>
-            <%= render 'shared/navigation/link', path: archive_path, title: t('.archive'), icon: 'archive', active: false %>
-            <!--TODO: create trash_path view and replace with partial-->
-            <li>
-              <%= link_to root_path, class: "group block hover:bg-highlight-light dark:hover:bg-highlight-dark px-2 py-2.5 text-sm font-medium text-heading-light dark:text-heading-dark dark:hover:text-white flex items-center rounded-md" do %>
-                <%= lucide_icon("trash", class: 'text-black dark:text-heading-dark dark:group-hover:text-white stroke-current mr-2 w-4 h-4') %>
-                <%= t(".trash") %>
-              <% end %>
-            </li>
-          </ul>
-        </nav>
-        <div class="flex flex-col mt-6 px-2">
-          <div class="flex items-center justify-between">
-            <%= link_to accounts_path, class: 'text-xs uppercase text-[#737373] font-bold tracking-wide' do%>
-              <%= t('.accounts') %>
-            <% end %>
-            <%= link_to new_account_path, class: 'block hover:bg-gray-100 p-2 text-sm font-semibold text-gray-900 flex items-center rounded', title: t('.new_account'), data: { turbo_frame: "modal" } do %>
-              <%= inline_svg_tag('icon-add.svg', class: 'text-gray-500 fill-current') %>
-            <% end %>
-          </div>
-
-
-          <%= link_to new_account_path, class: "flex items-center gap-4 px-2 py-3 mb-1 text-[#737373] text-sm font-medium rounded-[10px] hover:bg-[#f2f2f2]", data: { turbo_frame: "modal" } do %>
-            <%= lucide_icon("plus", class: "w-5 h-5") %>
-            <p><%= t('.new_account') %></p>
-          <% end %>
-        </div>
-      </div>
+         class="min-h-screen dark:text-white bg-background-light dark:bg-background-dark">
       <main class="flex-grow py-5 pr-5">
         <%= yield %>
       </main>
