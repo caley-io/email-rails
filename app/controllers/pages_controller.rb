@@ -2,8 +2,9 @@ class PagesController < ApplicationController
   before_action :authenticate_user!
 
   def inbox
-    @account = Current.team.accounts.last
-    @emails = @account.retrieve_recent_emails if @account.present?
+    # TODO: This is a temporary solution to retrieve the last email server
+    @email_server = EmailServer.last
+    @emails = @email_server.retrieve_recent_emails if @email_server.present?
   end
 
   def done

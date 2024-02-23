@@ -5,17 +5,18 @@ Rails.application.routes.draw do
   resource :password
   resource :settings, only: %i[edit update]
 
-  resources :accounts
+  resources :email_servers
 
-  scope "accounts/new" do
-    scope "bank" do
-      get "", to: "accounts#new_bank", as: "new_bank"
-    end
-
-    scope "credit" do
-      get "", to: "accounts#new_credit", as: "new_credit"
-    end
-  end
+  # TODO: Do we need this?
+  # scope "EmailServers/new" do
+  #   scope "bank" do
+  #     get "", to: "email_servers#new_bank", as: "new_bank"
+  #   end
+  #
+  #   scope "credit" do
+  #     get "", to: "email_servers#new_credit", as: "new_credit"
+  #   end
+  # end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.

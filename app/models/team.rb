@@ -1,4 +1,4 @@
 class Team < ApplicationRecord
-  has_many :users, dependent: :destroy
-  has_many :accounts, dependent: :destroy
+  has_many :teams_users
+  has_many :users, through: :teams_users
 end

@@ -1,9 +1,0 @@
----
-en:
-  accounts:
-    create:
-      success: New account created successfully
-    index:
-      title: Cash
-    new:
-      title: Add an account

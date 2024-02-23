@@ -12,7 +12,7 @@ class ApplicationHelperTest < ActionView::TestCase
   end
 
   test "#permitted_accountable_partial(accountable_type)" do
-    assert_equal "account", permitted_accountable_partial("Account")
+    assert_equal "email_server", permitted_accountable_partial("EmailServer")
     assert_equal "user", permitted_accountable_partial("User")
     assert_equal "admin_user", permitted_accountable_partial("AdminUser")
   end

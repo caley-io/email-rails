@@ -1,4 +1,4 @@
-module AccountsHelper
+module EmailServersHelper
   def to_accountable_title(accountable)
     accountable.model_name.human
   end
