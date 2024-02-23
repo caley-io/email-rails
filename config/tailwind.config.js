@@ -19,7 +19,7 @@ module.exports = {
       colors: {
         background: {
           light: '#F9FAFB',
-          dark: '#171717'
+          dark: '#191919'
         },
         border: {
           light: '#E5E7EB',
