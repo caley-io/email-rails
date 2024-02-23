@@ -13,4 +13,4 @@ en:
       invalid_invite_code: Invalid invite code, please try again.
       success: You have signed up successfully.
     new:
-      title: Create an account
+      title: Create an email_server

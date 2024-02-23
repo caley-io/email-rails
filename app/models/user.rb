@@ -1,7 +1,11 @@
 class User < ApplicationRecord
   has_secure_password
 
-  belongs_to :team
+  has_many :workspaces_users
+  has_many :workspaces, through: :workspaces_users
+  has_many :teams_users
+  has_many :teams, through: :teams_users
+
   accepts_nested_attributes_for :team
 
   validates :email, presence: true, uniqueness: true

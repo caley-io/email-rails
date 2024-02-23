@@ -10,4 +10,4 @@ en:
         team: Team
         team_id: Team
     models:
-      account: Account
+      account: EmailServer

@@ -1,7 +1,8 @@
-class Account < ApplicationRecord
-  belongs_to :team
+class EmailServer < ApplicationRecord
+  belongs_to :user
+  belongs_to :team, optional: true
 
-  # Establishes an IMAP connection using account credentials.
+  # Establishes an IMAP connection using email_server credentials.
   # If the connection fails, it logs the error and returns nil.
   #
   # Returns the IMAP connection object if successful.
@@ -14,7 +15,7 @@ class Account < ApplicationRecord
     nil
   end
 
-  # Retrieves the 20 most recent emails from the account's inbox.
+  # Retrieves the 20 most recent emails from the email_server's inbox.
   # It first establishes an IMAP connection, then searches for and fetches the emails.
   # If fetching fails, it logs the error and returns an empty array.
   #

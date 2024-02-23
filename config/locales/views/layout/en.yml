@@ -9,7 +9,7 @@ en:
       draft: Draft
       inbox: Inbox
       later: Send Later
-      new_account: New account
+      new_account: New email_server
       sent: Sent
       team: Team
       trash: Trash
@@ -17,7 +17,7 @@ en:
     auth:
       or: or
       privacy_policy: Privacy Policy
-      sign_in: sign in to your account
-      sign_up: create an account
+      sign_in: sign in to your email_server
+      sign_up: create an email_server
       terms_of_service: Terms of Service
-      your_account: Your account
+      your_account: Your email_server

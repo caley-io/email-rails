@@ -10,7 +10,7 @@ class TeamTest < ActiveSupport::TestCase
     assert @caley_team.users.include?(users(:bob))
   end
 
-  test "should have many accounts" do
+  test "should have many EmailServers" do
     assert_equal 1, @caley_team.accounts.size
   end
 
@@ -20,8 +20,8 @@ class TeamTest < ActiveSupport::TestCase
     end
   end
 
-  test "should destroy dependent accounts" do
-    assert_difference("Account.count", -@caley_team.accounts.count) do
+  test "should destroy dependent EmailServers" do
+    assert_difference("EmailServer.count", -@caley_team.accounts.count) do
       @caley_team.destroy
     end
   end
