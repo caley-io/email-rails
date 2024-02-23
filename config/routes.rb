@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
-  resource :registration
-  resource :sessions
-  resource :password_reset
-  resource :password
+  devise_for :users, controllers: { registrations: "registrations" }
+
   resource :settings, only: %i[edit update]
 
   resources :email_servers

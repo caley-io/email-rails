@@ -2,8 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-  has_secure_password
+         :recoverable, :rememberable
 
   has_many :workspaces_users
   has_many :workspaces, through: :workspaces_users
@@ -12,12 +11,11 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true
   normalizes :email, with: ->(email) { email.strip.downcase }
-
-  generates_token_for :password_reset, expires_in: 15.minutes do
-    password_salt&.last(10)
-  end
-
   validate :validate_email_format, on: [ :create, :update ]
+
+  validates :password, presence: true, length: {minimum: 6, maximum: 128}, on: :create
+  validates :password, length: {minimum: 6, maximum: 128}, on: :update, allow_blank: true
+
   before_save :postfix_email
 
   private
