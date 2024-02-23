@@ -1,7 +1,7 @@
 <div class="px-4">
   <h1 class="text-3xl font-semibold font-display"><%= t('.title') %></h1>
   <% if @email_server.blank? %>
-    <p>Connect your email account to get started.</p>
+    <p>Hey <%= current_user.first_name %>, connect your email account to get started!</p>
   <% elsif @emails.any? %>
     <%= render partial: "email_list", locals: { emails: @emails } %>
   <% else %>
