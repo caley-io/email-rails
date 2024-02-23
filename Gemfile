@@ -30,6 +30,7 @@ gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "money-rails", "~> 1.12"
 gem "net-imap"
+gem "devise"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
