@@ -1,7 +1,5 @@
 class ApplicationController < ActionController::Base
-  include Authentication
-
-  # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
+  before_action :configure_permitted_parameters, if: :devise_controller?
   allow_browser versions: :modern
 
   private
@@ -10,4 +8,13 @@ class ApplicationController < ActionController::Base
     ENV["HOSTED"] == "true"
   end
   helper_method :hosted_app?
+
+  protected
+
+  def configure_permitted_parameters
+    puts ">>> Here are the parameters: ", params
+
+    devise_parameter_sanitizer.permit(:sign_up, keys: [ :first_name, :last_name ])
+    devise_parameter_sanitizer.permit(:account_update, keys: [ :first_name, :last_name ])
+  end
 end
