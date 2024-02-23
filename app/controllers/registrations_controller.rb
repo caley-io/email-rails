@@ -9,10 +9,8 @@ class RegistrationsController < ApplicationController
   end
 
   def create
-    team = Team.new
-    @user.team = team
-
     if @user.save
+      @user.workspaces.create(name: "#{@user.first_name}'s Workspace'", owner_id: @user.id)
       login @user
       flash[:notice] = t(".success")
       redirect_to root_path
