@@ -1,6 +1,6 @@
 class CreateTeams < ActiveRecord::Migration[7.2]
   def change
-    create_table :teams, id: :uuid do |t|
+    create_table :teams do |t|
       t.string :name
 
       t.timestamps
