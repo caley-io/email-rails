@@ -48,7 +48,13 @@
         <div data-controller="menu">
           <%= render 'shared/navigation/floating_menu' %>
 
-          <div data-controller="search" data-action="keydown@window->search#searchKeydown">
+          <div data-controller="user"
+               data-action="keydown@window->user#userModalKeydown">
+            <%= render 'shared/modals/user' %>
+          </div>
+
+          <div data-controller="search"
+               data-action="keydown@window->search#searchKeydown">
             <%= render 'shared/modals/search' %>
           </div>
         </div>
