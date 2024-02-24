@@ -18,61 +18,54 @@ RUN ruby-install -p https://github.com/ruby/ruby/pull/9371.diff ruby 3.3.0
 # Make the Ruby binary available on the PATH
 ENV PATH="/opt/rubies/ruby-3.3.0/bin:${PATH}"
 
-
-# Rails app lives here
+# Set working directory
 WORKDIR /rails
 
-# Set production environment
-ENV RAILS_ENV="production" \
-    BUNDLE_DEPLOYMENT="1" \
-    BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development"
+# Set environment variables for production
+ENV RAILS_ENV=production \
+    BUNDLE_WITHOUT=development:test \
+    BUNDLE_PATH=/usr/local/bundle \
+    GEM_HOME=/usr/local/bundle
 
+# Install runtime dependencies
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y curl default-mysql-client libvips && \
+    rm -rf /var/lib/apt/lists/*
 
 # Throw-away build stage to reduce size of final image
 FROM base as build
 
-# Install packages needed to build gems
+# Install build dependencies
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential git libpq-dev libvips pkg-config
+    apt-get install --no-install-recommends -y build-essential default-libmysqlclient-dev git libvips pkg-config && \
+    rm -rf /var/lib/apt/lists/*
 
-# Install application gems
-COPY Gemfile Gemfile.lock ./
-RUN bundle install && \
-    rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
-    bundle exec bootsnap precompile --gemfile
+# Install gems
+COPY Gemfile* /rails/
+RUN bundle install --jobs=$(nproc) --retry=3 && \
+    rm -rf /usr/local/bundle/cache/*.gem
+
 
 # Copy application code
-COPY . .
+COPY . /rails/
 
-# Precompile bootsnap code for faster boot times
-RUN bundle exec bootsnap precompile app/ lib/
-
-# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
-
+# Precompile bootsnap and assets
+RUN bundle exec bootsnap precompile --gemfile app/ lib/ && \
+    SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
 # Final stage for app image
 FROM base
 
-# Install packages needed for deployment
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libvips postgresql-client && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
-
-# Copy built artifacts: gems, application
-COPY --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
+# Copy built artifacts from the build stage
+COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /rails /rails
 
 # Run and own only the runtime files as a non-root user for security
 RUN groupadd --system --gid 1000 rails && \
-    useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
-    chown -R rails:rails db log storage tmp
-USER 1000:1000
+    useradd --system --uid 1000 --gid 1000 --create-home --shell /bin/bash rails && \
+    chown -R rails:rails /rails
+USER rails
 
-# Entrypoint prepares the database.
-ENTRYPOINT ["/rails/bin/docker-entrypoint"]
-
-# Start the server by default, this can be overwritten at runtime
+# Expose port and set default command
 EXPOSE 3000
 CMD ["./bin/rails", "server"]

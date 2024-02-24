@@ -13,14 +13,13 @@
 # gem "pg"
 #
 default: &default
-  adapter: postgresql
-  encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  adapter: mysql2
+  encoding: utf8mb4
+  host: 127.0.0.1
+  port: 3306
+  username: root
+  password: p@ssword
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: <%= ENV.fetch("DB_HOST") { "127.0.0.1" } %>
-  password: <%= ENV.fetch("POSTGRES_PASSWORD") { nil } %>
-  user: <%= ENV.fetch("POSTGRES_USER") { nil } %>
 
 development:
   <<: *default
@@ -82,6 +81,7 @@ test:
 #
 production:
   <<: *default
+  host: <%= ENV["DB_HOST"] %>
   database: caley_production
-  username: caley
-  password: <%= ENV["CALEY_DATABASE_PASSWORD"] %>
+  username: root
+  password: <%= ENV["MYSQL_ROOT_PASSWORD"] %>
