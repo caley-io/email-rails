@@ -1,8 +1,23 @@
 # syntax = docker/dockerfile:1
 
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
-ARG RUBY_VERSION=3.3.0
-FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
+FROM debian:bullseye-slim as base
+
+# Install dependencies for building Ruby
+RUN apt-get update && apt-get install -y build-essential wget autoconf
+
+# Install ruby-install for installing Ruby
+RUN wget https://github.com/postmodern/ruby-install/releases/download/v0.9.3/ruby-install-0.9.3.tar.gz \
+  && tar -xzvf ruby-install-0.9.3.tar.gz \
+  && cd ruby-install-0.9.3/ \
+  && make install
+
+# Install Ruby 3.3.0 with the https://github.com/ruby/ruby/pull/9371 patch
+RUN ruby-install -p https://github.com/ruby/ruby/pull/9371.diff ruby 3.3.0
+
+# Make the Ruby binary available on the PATH
+ENV PATH="/opt/rubies/ruby-3.3.0/bin:${PATH}"
+
 
 # Rails app lives here
 WORKDIR /rails
