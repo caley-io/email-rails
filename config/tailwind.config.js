@@ -10,11 +10,12 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
-      fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+      backdropFilter: {
+        'none': 'none',
+        'blur': 'blur(20px)',
       },
-      fontSize: {
-        '2xs': '.625rem',
+      boxShadow: {
+        'xs': '0px 1px 2px 0px #1018280D'
       },
       colors: {
         background: {
@@ -38,9 +39,17 @@ module.exports = {
       dropShadow: {
         'form': '0px 4px 10px rgba(52, 54, 60, 0.08)',
       },
-      boxShadow: {
-        'xs': '0px 1px 2px 0px #1018280D'
-      }
+      fontFamily: {
+        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+      },
+      fontSize: {
+        '2xs': '.625rem',
+      },
+    },
+  },
+  variants: {
+    extend: {
+      backdropFilter: ['responsive'],
     },
   },
   options: {

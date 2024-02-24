@@ -1,18 +1,20 @@
 <div class="absolute bottom-3">
   <div class="flex justify-center w-screen">
-    <div class="flex items-center gap-x-1 p-1 dark:bg-neutral-800 border dark:border-neutral-700 rounded-xl">
-      <div class="flex items-center h-8 px-2 text-neutral-400 rounded-lg bg-neutral-700">
+    <div class="flex items-center gap-x-1 p-1 dark:bg-neutral-800/80 backdrop-filter backdrop-blur border dark:border-neutral-700 rounded-xl shadow-md">
+      <div class="flex items-center h-8 px-2 text-neutral-400 rounded-lg hover:bg-neutral-700">
         <div class="flex items-center justify-center w-5 h-5 bg-sky-200 rounded-full">
           <p class="text-neutral-900 text-sm font-medium"><%= current_user.first_name.first %></p>
         </div>
       </div>
-      <div class="flex items-center h-8 px-2.5 text-neutral-400 rounded-lg bg-neutral-700">
+      <div data-action="click->menu#toggleSearchModal"
+           class="flex items-center h-8 px-2 text-neutral-400 rounded-lg hover:bg-neutral-700"
+      >
         <svg width="22" height="22" fill="none" viewBox="0 0 24 24">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.25 19.25L15.5 15.5M4.75 11C4.75 7.54822 7.54822 4.75 11 4.75C14.4518 4.75 17.25 7.54822 17.25 11C17.25 14.4518 14.4518 17.25 11 17.25C7.54822 17.25 4.75 14.4518 4.75 11Z"></path>
         </svg>
       </div>
       <%= button_to destroy_user_session_path, method: :delete do %>
-        <div class="flex items-center justify-center h-8 px-2 text-red-200 bg-red-200/30 rounded-lg">
+        <div class="flex items-center justify-center h-8 px-2 text-red-200 hover:bg-red-200/30 rounded-lg">
           <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 8.75L19.25 12L15.75 15.25"></path>
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 12H10.75"></path>
