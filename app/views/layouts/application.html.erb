@@ -45,10 +45,12 @@
       </div>
 
       <% if user_signed_in? %>
-        <%= render 'shared/navigation/floating_menu' %>
+        <div data-controller="menu">
+          <%= render 'shared/navigation/floating_menu' %>
 
-        <div data-controller="search" data-action="keydown@window->search#searchKeydown">
-          <%= render 'shared/modals/search' %>
+          <div data-controller="search" data-action="keydown@window->search#searchKeydown">
+            <%= render 'shared/modals/search' %>
+          </div>
         </div>
       <% end %>
 
