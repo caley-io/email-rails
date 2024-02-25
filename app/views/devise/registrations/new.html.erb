@@ -1,7 +1,11 @@
 <div class="flex items-center justify-center w-screen h-screen">
   <div>
     <div class="flex flex-col items-center gap-y-3">
-      <%= image_tag 'logo.png', class: 'w-12 h-12' %>
+      <% if session[:theme] == 'dark' %>
+        <%= image_tag 'logo-light.png', class: 'w-12 h-12' %>
+      <% else %>
+        <%= image_tag 'logo-dark.png', class: 'w-12 h-12' %>
+      <% end %>
       <h2 class="text-xl">Sign up for Caley</h2>
     </div>
 
@@ -11,17 +15,17 @@
 
         <div class="field">
           <%= f.label :first_name, class: 'text-sm' %><br />
-          <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: 'w-96 mb-3 bg-neutral-800 focus:ring-0 outline-none border-none rounded-lg' %>
+          <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: 'w-96 mb-3 dark:bg-neutral-800 focus:ring-0 outline-none border-none rounded-lg' %>
         </div>
 
         <div class="field">
           <%= f.label :last_name, class: 'text-sm' %><br />
-          <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: 'w-96 mb-3 bg-neutral-800 focus:ring-0 outline-none border-none rounded-lg' %>
+          <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: 'w-96 mb-3 dark:bg-neutral-800 focus:ring-0 outline-none border-none rounded-lg' %>
         </div>
 
         <div class="field">
           <%= f.label :email, class: 'text-sm' %><br />
-          <%= f.text_field :email, autofocus: true, autocomplete: "email", class: 'w-96 mb-3 bg-neutral-800 focus:ring-0 outline-none border-none rounded-lg' %>
+          <%= f.text_field :email, autofocus: true, autocomplete: "email", class: 'w-96 mb-3 dark:bg-neutral-800 focus:ring-0 outline-none border-none rounded-lg' %>
         </div>
 
         <div class="field">
@@ -29,16 +33,16 @@
           <% if @minimum_password_length %>
             <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password", class: 'w-96 mb-3 bg-neutral-800 focus:ring-0 outline-none border-none rounded-lg' %>
+          <%= f.password_field :password, autocomplete: "new-password", class: 'w-96 mb-3 dark:bg-neutral-800 focus:ring-0 outline-none border-none rounded-lg' %>
         </div>
 
         <div class="field">
           <%= f.label :password_confirmation, class: 'text-sm' %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'w-96 mb-3 bg-neutral-800 focus:ring-0 outline-none border-none rounded-lg' %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'w-96 mb-3 dark:bg-neutral-800 focus:ring-0 outline-none border-none rounded-lg' %>
         </div>
 
         <div class="actions">
-          <%= f.submit "Sign up", class: 'w-96 h-10 mb-3 bg-white text-neutral-900 font-medium focus:ring-0 outline-none border-none rounded-lg' %>
+          <%= f.submit "Sign up", class: 'w-96 h-10 mb-3 bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 font-medium focus:ring-0 outline-none border-none rounded-lg' %>
         </div>
       <% end %>
 

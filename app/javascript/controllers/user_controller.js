@@ -33,6 +33,7 @@ export default class UserController extends Controller {
   highlight() {
     this.userModalItemTargets.forEach((element, idx) => {
       element.classList.toggle('search-item-highlight', idx === this.listItemIndex)
+      element.classList.toggle('dark:search-item-highlight-dark', idx === this.listItemIndex)
     })
   }
 

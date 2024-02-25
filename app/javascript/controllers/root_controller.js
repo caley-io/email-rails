@@ -20,6 +20,8 @@ export default class extends Controller {
 
   highlightFilter() {
     this.filterTargets.forEach((filter, index) => {
+      filter.classList.toggle("text-neutral-900", index === this.filterIndex)
+      filter.classList.toggle("bg-neutral-200", index === this.filterIndex)
       filter.classList.toggle("dark:text-white", index === this.filterIndex)
       filter.classList.toggle("dark:bg-neutral-800/80", index === this.filterIndex)
     })

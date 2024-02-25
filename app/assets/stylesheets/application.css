@@ -1,5 +1,18 @@
 /* Search Modal */
+
 .search-item-highlight {
+    background-color: #e5e5e5;
+    color: black;
+}
+
+.search-item-highlight-dark {
     background-color: #333333;
     color: white;
+}
+
+.logout-btn {
+    &.search-item-highlight {
+        background-color: #fae7e7;
+        color: black;
+    }
 }
