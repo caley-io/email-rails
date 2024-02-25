@@ -1,20 +1,14 @@
 bob:
-  team: caley_team
   first_name: Bob
   last_name: Dylan
   email: bob@caley.io
-  password_digest: <%= BCrypt::Password.create('password') %>
 
 jakob:
-  team: google_team
   first_name: Jakob
   last_name: Dylan
   email: jakobdylan@caley.io
-  password_digest: <%= BCrypt::Password.create('password') %>
 
 keith:
-  team: apple_team
   first_name: Keith
   last_name: Richards
   email: keith@caley.io
-  password_digest: <%= BCrypt::Password.create('password') %>
