@@ -27,6 +27,6 @@ class User < ApplicationRecord
   end
 
   def postfix_email
-    self.email = "#{email}@caley.io" unless email.include?("@caley.io")
+    self.email = "#{email}@caley.to" unless email.include?("@caley.to")
   end
 end
