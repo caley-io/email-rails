@@ -2,16 +2,16 @@
      data-user-target="userModal"
      class="hidden absolute bottom-16">
   <div class="flex justify-center w-screen">
-    <div class="w-[500px] dark:bg-neutral-800/80 backdrop-filter backdrop-blur border dark:border-neutral-700 rounded-xl shadow-md">
+    <div class="w-[500px] dark:bg-neutral-800/80 backdrop-filter backdrop-blur border border-neutral-200 dark:border-neutral-700 rounded-xl shadow-md">
       <div class="">
-        <div class="p-1 border-b border-neutral-700">
-          <div data-user-target="userModalItem" class="flex items-center justify-between pl-1 pr-2 py-1 text-neutral-400 hover:bg-neutral-700/50 rounded-lg">
+        <div class="p-1 border-b border-neutral-200 dark:border-neutral-700">
+          <div data-user-target="userModalItem" class="flex items-center justify-between pl-1 pr-2 py-1 text-neutral-600 dark:text-neutral-400 hover:text-black hover:bg-neutral-200 dark:hover:bg-neutral-700/50 rounded-lg">
             <div class="flex items-center gap-x-1.5">
               <div class="flex items-center justify-center w-7 h-7 bg-indigo-200 rounded-md">
                 <p class="text-sm font-medium text-neutral-900"><%= current_user.workspaces.first.name.first %></p>
               </div>
               <div>
-                <p class="text-[10px] font-medium text-white"><%= current_user.workspaces.first.name %></p>
+                <p class="text-[10px] font-medium"><%= current_user.workspaces.first.name %></p>
                 <p class="text-[10px] font-medium"><%= current_user.email %></p>
               </div>
             </div>
@@ -26,34 +26,34 @@
           </div>
         </div>
         <div class="flex flex-col gap-y-0.5 p-1">
-          <div data-user-target="userModalItem" class="flex items-center justify-between p-2 text-neutral-400 hover:bg-neutral-700/50 rounded-lg">
+          <div data-user-target="userModalItem" class="flex items-center justify-between p-2 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700/50 rounded-lg">
             <div>
               <p class="text-xs font-medium">Create workspace</p>
             </div>
             <div>
-              <div class="flex items-center justify-center w-5 h-5 bg-neutral-600 rounded">
-                <p class="text-xs font-medium text-neutral-400">W</p>
+              <div class="flex items-center justify-center w-5 h-5 bg-neutral-300 dark:bg-neutral-600 rounded">
+                <p class="text-xs font-medium text-neutral-600 dark:text-neutral-400">W</p>
               </div>
             </div>
           </div>
-          <div data-user-target="userModalItem" class="flex items-center justify-between p-2 text-neutral-400 hover:bg-neutral-700/50 rounded-lg">
+          <div data-user-target="userModalItem" class="flex items-center justify-between p-2 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700/50 rounded-lg">
             <div>
               <p class="text-xs font-medium">User settings</p>
             </div>
             <div>
-              <div class="flex items-center justify-center w-5 h-5 bg-neutral-600 rounded">
-                <p class="text-xs font-medium text-neutral-400">S</p>
+              <div class="flex items-center justify-center w-5 h-5 bg-neutral-300 dark:bg-neutral-600 rounded">
+                <p class="text-xs font-medium text-neutral-600 dark:text-neutral-400">S</p>
               </div>
             </div>
           </div>
           <%= button_to destroy_user_session_path, class: 'w-full', method: :delete do %>
-            <div data-user-target="userModalItem" class="flex items-center justify-between p-2 text-neutral-400 hover:bg-red-200/10 rounded-lg">
+            <div data-user-target="userModalItem" class="logout-btn flex items-center justify-between p-2 hover:bg-red-200/20 dark:hover:bg-red-200/10 rounded-lg">
               <div>
-                <p class="text-xs font-medium text-red-200">Log out</p>
+                <p class="text-xs font-medium text-red-400 dark:text-red-200">Log out</p>
               </div>
               <div>
-                <div class="flex items-center justify-center w-5 h-5 bg-red-200/20 rounded">
-                  <p class="text-xs font-medium text-red-200">X</p>
+                <div class="flex items-center justify-center w-5 h-5 bg-red-400/20 dark:bg-red-200/20 rounded">
+                  <p class="text-xs font-medium text-red-400 dark:text-red-200">X</p>
                 </div>
               </div>
             </div>
