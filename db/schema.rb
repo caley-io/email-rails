@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_02_23_180744) do
+ActiveRecord::Schema[7.2].define(version: 2024_02_26_200516) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "actions", force: :cascade do |t|
+    t.string "title"
+    t.integer "status"
+    t.string "description"
+    t.bigint "message_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["message_id"], name: "index_actions_on_message_id"
+    t.index ["user_id"], name: "index_actions_on_user_id"
+  end
 
   create_table "email_servers", force: :cascade do |t|
     t.string "name", null: false
@@ -37,6 +49,26 @@ ActiveRecord::Schema[7.2].define(version: 2024_02_23_180744) do
     t.index ["token"], name: "index_invite_codes_on_token", unique: true
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "thread_id", null: false
+    t.bigint "email_server_id", null: false
+    t.string "sender_name"
+    t.string "from", null: false
+    t.string "to", null: false
+    t.string "subject"
+    t.string "snippet"
+    t.string "body"
+    t.string "summary"
+    t.integer "urgency"
+    t.integer "in_reply_to"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email_server_id"], name: "index_messages_on_email_server_id"
+    t.index ["thread_id"], name: "index_messages_on_thread_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.string "avatar_url"
@@ -53,6 +85,19 @@ ActiveRecord::Schema[7.2].define(version: 2024_02_23_180744) do
     t.datetime "updated_at", null: false
     t.index ["team_id"], name: "index_teams_users_on_team_id"
     t.index ["user_id"], name: "index_teams_users_on_user_id"
+  end
+
+  create_table "threads", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "email_server_id", null: false
+    t.string "gmail_history_id"
+    t.string "snippet"
+    t.string "summary"
+    t.integer "urgency", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email_server_id"], name: "index_threads_on_email_server_id"
+    t.index ["user_id"], name: "index_threads_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -85,11 +130,18 @@ ActiveRecord::Schema[7.2].define(version: 2024_02_23_180744) do
     t.index ["workspace_id"], name: "index_workspaces_users_on_workspace_id"
   end
 
+  add_foreign_key "actions", "messages"
+  add_foreign_key "actions", "users"
   add_foreign_key "email_servers", "teams"
   add_foreign_key "email_servers", "users"
+  add_foreign_key "messages", "email_servers"
+  add_foreign_key "messages", "threads"
+  add_foreign_key "messages", "users"
   add_foreign_key "teams", "workspaces"
   add_foreign_key "teams_users", "teams"
   add_foreign_key "teams_users", "users"
+  add_foreign_key "threads", "email_servers"
+  add_foreign_key "threads", "users"
   add_foreign_key "workspaces", "users", column: "owner_id"
   add_foreign_key "workspaces_users", "users"
   add_foreign_key "workspaces_users", "workspaces"
