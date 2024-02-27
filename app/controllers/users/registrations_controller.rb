@@ -1,4 +1,6 @@
-class RegistrationsController < Devise::RegistrationsController
+class Users::RegistrationsController < Devise::RegistrationsController
+  layout "auth"
+
   def create
     super do |resource|
       if resource.persisted?
