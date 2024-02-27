@@ -6,42 +6,39 @@ export default class extends Controller {
 
   connect() {
     this.currentTheme = localStorage.getItem('theme');
-    this.setTheme()
-    this.setToggle()
+    this.setAppTheme()
   }
 
   saveTheme(theme) {
     localStorage.setItem('theme', theme);
   }
 
-  setTheme() {
-    if (this.currentTheme === 'dark') {
-      this.bodyTarget.classList.add('dark')
+  setAppTheme() {
+    if (this.currentTheme === 'dark' || this.currentTheme === null) {
+      this.setDarkTheme()
     } else {
-      this.bodyTarget.classList.remove('dark')
+      this.setLightTheme()
     }
   }
 
-  setToggle() {
-    if (this.currentTheme === 'dark') {
-      this.sunTarget.classList.add('hidden')
-    } else {
-      this.moonTarget.classList.add('hidden')
-    }
+  // TODO: Fix this ugly mess
+  setLightTheme() {
+    this.bodyTarget.classList.remove('dark')
+    this.sunTarget.classList.remove('border-transparent')
+    this.sunTarget.classList.add('border-emerald-300')
+    this.moonTarget.classList.add('border-transparent')
+    this.moonTarget.classList.remove('border-emerald-300')
+    this.saveTheme('light');
   }
 
-  toggle() {
-    let theme = localStorage.getItem('theme');
-    if (theme === 'dark') {
-      this.bodyTarget.classList.remove('dark')
-      this.sunTarget.classList.remove('hidden')
-      this.moonTarget.classList.add('hidden')
-      this.saveTheme('light');
-    } else {
-      this.bodyTarget.classList.add('dark')
-      this.sunTarget.classList.add('hidden')
-      this.moonTarget.classList.remove('hidden')
-      this.saveTheme('dark')
-    }
+  // TODO: Fix this ugly mess
+  setDarkTheme() {
+    this.bodyTarget.classList.add('dark')
+    this.moonTarget.classList.remove('border-transparent')
+    this.moonTarget.classList.add('border-emerald-300')
+    this.sunTarget.classList.add('border-transparent')
+    this.sunTarget.classList.remove('border-emerald-300')
+    this.saveTheme('dark');
   }
+
 }

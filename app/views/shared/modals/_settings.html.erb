@@ -1,0 +1,80 @@
+<div data-menu-target="userSettingsModal" class="hidden absolute top-24">
+  <div class="flex justify-center w-screen">
+    <div class="w-[900px] bg-white/60 dark:bg-neutral-800/90 backdrop-filter backdrop-blur border dark:border-neutral-700 rounded-2xl shadow-md">
+      <div class="flex items-center justify-between p-2 border-b border-neutral-200 dark:border-neutral-700">
+        <div class="ml-1">
+          <p class="font-medium">Settings</p>
+        </div>
+        <div data-action="click->menu#closeUserSettingsModal"
+             class="flex items-center justify-center w-8 h-8 bg-neutral-200/70 hover:bg-neutral-200 dark:bg-neutral-700/50 hover:dark:bg-neutral-700 rounded-full">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.25 6.75L6.75 17.25"></path>
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.75 6.75L17.25 17.25"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="grid grid-cols-10 min-h-[600px] overflow-y-scroll mt-3">
+        <div class="col-span-2 px-1">
+          <div class="flex flex-col gap-y-0.5 p-1">
+            <div data-search-target="searchItem" class="flex items-center justify-between p-2 text-neutral-600 dark:text-neutral-400 bg-neutral-200 dark:bg-neutral-700/50 dark:hover:bg-neutral-700/50 rounded-lg">
+              <div>
+                <p class="text-xs font-medium">User</p>
+              </div>
+            </div>
+            <div data-search-target="searchItem" class="flex items-center justify-between p-2 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700/50 rounded-lg">
+              <div>
+                <p class="text-xs font-medium">Workspaces</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-span-8 px-24 pb-12">
+          <div class="mb-4 pb-3">
+            <h1 class="text-xl font-medium">User settings</h1>
+          </div>
+          <div>
+            <div class="mb-3 px-1">
+              <h1 class="text-md font-medium">Theme</h1>
+              <p class="text-xs text-neutral-600 dark:text-neutral-400">Set your app theme</p>
+            </div>
+            <div class="flex gap-x-1">
+              <div data-action="click->theme#setDarkTheme"
+                   data-theme-target="moon"
+                   class="p-0.5 border-2 border-transparent hover:border-emerald-300 rounded-xl">
+                <div class="flex items-center gap-x-1 pl-2 pr-3 py-1.5 text-sm font-medium text-sky-800 bg-indigo-200 rounded-lg cursor-pointer">
+                  <div>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M18.25 15.0314C17.7575 15.1436 17.2459 15.2027 16.7209 15.2027C12.8082 15.2027 9.63607 11.9185 9.63607 7.86709C9.63607 6.75253 9.87614 5.69603 10.3057 4.75C7.12795 5.47387 4.75 8.40659 4.75 11.9143C4.75 15.9657 7.9221 19.25 11.8348 19.25C14.6711 19.25 17.1182 17.5242 18.25 15.0314Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </div>
+                  <p>Dark</p>
+                </div>
+              </div>
+              <div data-action="click->theme#setLightTheme"
+                   data-theme-target="sun"
+                   class="p-0.5 border-2 border-transparent hover:border-emerald-300 rounded-xl">
+                <div class="flex items-center gap-x-1 pl-2 pr-3 py-1.5 text-sm font-medium text-amber-800 bg-amber-100 rounded-lg cursor-pointer">
+                  <div>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9.25 16.25L8.5627 15.5C8.05157 14.7984 7.75 13.9344 7.75 13C7.75 10.6528 9.65279 8.75 12 8.75C14.3472 8.75 16.25 10.6528 16.25 13C16.25 13.9344 15.9484 14.7984 15.4373 15.5L14.75 16.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path d="M4.74023 16.25H19.2502" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path d="M6.74023 19.25H17.2502" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path d="M12 4.75V5.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path d="M15.625 5.72132L15.375 6.15433" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path d="M18.2787 8.375L17.8457 8.625" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path d="M19.25 12.0001H18.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path d="M5.25 12H4.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path d="M6.15445 8.62501L5.72144 8.37501" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path d="M8.625 6.15435L8.375 5.72133" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </div>
+                  <p>Light</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,6 +8,7 @@ export default class extends Controller {
 
     this.searchModalOpen = false
     this.userModalOpen = false
+    this.userSettingsModalOpen = false
   }
 
   setSearchModalOpen(state) {
@@ -16,6 +17,10 @@ export default class extends Controller {
 
   setUserModalOpen(state) {
     this.userModalOpen = state
+  }
+
+  setUserSettingsModalOpen(state) {
+    this.userSettingsModalOpen = state
   }
 
   highlightFilter() {

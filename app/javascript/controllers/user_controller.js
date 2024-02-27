@@ -32,8 +32,8 @@ export default class UserController extends Controller {
 
   highlight() {
     this.userModalItemTargets.forEach((element, idx) => {
-      element.classList.toggle('search-item-highlight', idx === this.listItemIndex)
-      element.classList.toggle('dark:search-item-highlight-dark', idx === this.listItemIndex)
+      element.classList.toggle('bg-neutral-200', idx === this.listItemIndex)
+      element.classList.toggle('dark:bg-neutral-700/50', idx === this.listItemIndex)
     })
   }
 
@@ -43,6 +43,15 @@ export default class UserController extends Controller {
 
   closeUserModal() {
     this.userModalTarget.classList.add('hidden')
+  }
+
+  toggleUserSettingsModal(event) {
+    event.preventDefault()
+    const rootController = this.application.controllers.find(c => c.identifier === "root")
+
+    this.userSettingsModalTarget.classList.toggle('hidden')
+    const modalState = rootController.userSettingsModalOpen
+    rootController.setUserSettingsModalOpen(!modalState)
   }
 
   userModalKeydown(event) {
