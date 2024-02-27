@@ -5,11 +5,6 @@
     color: black;
 }
 
-.search-item-highlight-dark {
-    background-color: #333333;
-    color: white;
-}
-
 .logout-btn {
     &.search-item-highlight {
         background-color: #fae7e7;

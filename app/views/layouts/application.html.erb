@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="bg-offwhite">
+<html>
   <head>
     <title><%= content_for(:title) || "Caley.to" %></title>
     <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -26,7 +26,7 @@
   <body data-controller="theme"
         data-theme-target="body">
     <div data-controller="root"
-         class="min-h-screen dark:text-white bg-background-light dark:bg-background-dark"
+         class="min-h-screen dark:text-white bg-white dark:bg-background-dark"
     >
       <div>
         <!-- TODO: Fix this -->
@@ -37,7 +37,7 @@
             <div class="flex items-center gap-x-1.5">
               <% @filters.each do |f| %>
                 <div data-root-target="filter"
-                     class="flex items-center h-7 px-2 text-neutral-400 hover:text-neutral-900 hover:bg-neutral-200 group-hover:dark:text-white hover:dark:bg-neutral-800/80 backdrop-filter backdrop-blur rounded-md">
+                     class="flex items-center h-7 px-2 text-neutral-400 hover:text-neutral-900  hover:bg-neutral-200 hover:dark:text-white hover:dark:bg-neutral-800/80 backdrop-filter backdrop-blur rounded-md">
                   <p class="text-xs font-medium"><%= f %></p>
                 </div>
               <% end %>
@@ -69,6 +69,10 @@
           <div data-controller="search"
                data-action="keydown@window->search#searchKeydown">
             <%= render 'shared/modals/search' %>
+          </div>
+
+          <div>
+            <%= render 'shared/modals/settings' %>
           </div>
         </div>
       <% end %>
