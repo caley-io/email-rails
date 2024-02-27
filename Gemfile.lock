@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/rails/rails.git
-  revision: c676398d5ed0afe58ac7547f86547c3e85911af1
+  revision: af85f744181069b852b03e7f46f78575c19dd409
   branch: main
   specs:
     actioncable (7.2.0.alpha)
@@ -288,7 +288,7 @@ GEM
     redis-client (0.19.1)
       connection_pool
     regexp_parser (2.9.0)
-    reline (0.4.2)
+    reline (0.4.3)
       io-console (~> 0.5)
     responders (3.1.1)
       actionpack (>= 5.2)
@@ -360,7 +360,7 @@ GEM
       railties (>= 6.0.0)
     terminal-table (3.0.2)
       unicode-display_width (>= 1.1.1, < 3)
-    thor (1.3.0)
+    thor (1.3.1)
     timeout (0.4.1)
     turbo-rails (2.0.4)
       actionpack (>= 6.0.0)
