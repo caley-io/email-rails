@@ -26,22 +26,18 @@
   <body data-controller="theme"
         data-theme-target="body">
     <div data-controller="root"
-         class="min-h-screen dark:text-white bg-white dark:bg-background-dark"
-    >
-      <div>
-        <!-- TODO: Fix this -->
-        <% if user_signed_in? %>
-          <nav data-controller="navbar"
-               data-action="keydown@window->root#navbarKeydown"
-               class="fixed flex items-center justify-between w-full p-2">
-            <div class="flex items-center gap-x-1.5">
-              <% @filters.each do |f| %>
-                <div data-root-target="filter"
-                     class="flex items-center h-7 px-2 text-neutral-400 hover:text-neutral-900  hover:bg-neutral-200 hover:dark:text-white hover:dark:bg-neutral-800/80 backdrop-filter backdrop-blur rounded-md">
-                  <p class="text-xs font-medium"><%= f %></p>
-                </div>
-              <% end %>
+         class="min-h-screen dark:text-white bg-white dark:bg-background-dark">
+      <nav data-controller="navbar"
+           data-action="keydown@window->root#navbarKeydown"
+           class="fixed flex items-center justify-between w-full p-2">
+        <div class="flex items-center gap-x-1.5">
+          <% @filters.each do |f| %>
+            <div data-root-target="filter"
+                 class="flex items-center h-7 px-2 text-neutral-400 hover:text-neutral-900  hover:bg-neutral-200 hover:dark:text-white hover:dark:bg-neutral-800/80 backdrop-filter backdrop-blur rounded-md">
+              <p class="text-xs font-medium"><%= f %></p>
             </div>
+          <% end %>
+        </div>
 
 <!--            TODO: We'll add custom filters in the near future -->
 <!--            <div>-->
@@ -49,35 +45,30 @@
 <!--                <p class="font-medium text-neutral-400 group-hover:text-white">+</p>-->
 <!--              </div>-->
 <!--            </div>-->
-          </nav>
-        <% end %>
-        <main class="min-h-screen">
-          <%= yield %>
-        </main>
+      </nav>
+      <main class="min-h-screen">
+        <%= yield %>
+      </main>
+
+      <div data-controller="menu">
+        <%= render 'shared/navigation/floating_menu' %>
+
+        <div data-controller="user"
+             data-action="keydown@window->user#userModalKeydown">
+          <%= render 'shared/modals/user' %>
+        </div>
+
+        <div data-controller="search"
+             data-action="keydown@window->search#searchKeydown">
+          <%= render 'shared/modals/search' %>
+        </div>
+
+        <div>
+          <%= render 'shared/modals/settings' %>
+        </div>
       </div>
 
-      <!-- TODO: Fix this -->
-      <% if user_signed_in? %>
-        <div data-controller="menu">
-          <%= render 'shared/navigation/floating_menu' %>
-
-          <div data-controller="user"
-               data-action="keydown@window->user#userModalKeydown">
-            <%= render 'shared/modals/user' %>
-          </div>
-
-          <div data-controller="search"
-               data-action="keydown@window->search#searchKeydown">
-            <%= render 'shared/modals/search' %>
-          </div>
-
-          <div>
-            <%= render 'shared/modals/settings' %>
-          </div>
-        </div>
-      <% end %>
-
-      <%= turbo_frame_tag "modal" %>
+      <%= turbo_frame_tag "base" %>
     </div>
   </body>
 </html>
