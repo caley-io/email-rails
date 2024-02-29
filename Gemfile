@@ -32,6 +32,8 @@ gem "money-rails", "~> 1.12"
 gem "net-imap"
 gem "devise"
 
+gem "strong_migrations"
+
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   gem "brakeman", require: false
