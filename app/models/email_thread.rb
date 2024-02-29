@@ -1,4 +1,4 @@
-class Thread < ApplicationRecord
+class EmailThread < ApplicationRecord
   # TODO: Categories
   belongs_to :email_server
   belongs_to :user
