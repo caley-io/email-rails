@@ -42,6 +42,19 @@ ActiveRecord::Schema[7.2].define(version: 2024_02_26_200516) do
     t.index ["user_id"], name: "index_email_servers_on_user_id"
   end
 
+  create_table "email_threads", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "email_server_id", null: false
+    t.string "gmail_history_id"
+    t.string "snippet"
+    t.string "summary"
+    t.integer "urgency", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email_server_id"], name: "index_email_threads_on_email_server_id"
+    t.index ["user_id"], name: "index_email_threads_on_user_id"
+  end
+
   create_table "invite_codes", force: :cascade do |t|
     t.string "token"
     t.datetime "created_at", null: false
@@ -51,7 +64,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_02_26_200516) do
 
   create_table "messages", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "thread_id", null: false
+    t.bigint "email_thread_id", null: false
     t.bigint "email_server_id", null: false
     t.string "sender_name"
     t.string "from", null: false
@@ -65,7 +78,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_02_26_200516) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email_server_id"], name: "index_messages_on_email_server_id"
-    t.index ["thread_id"], name: "index_messages_on_thread_id"
+    t.index ["email_thread_id"], name: "index_messages_on_email_thread_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -85,19 +98,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_02_26_200516) do
     t.datetime "updated_at", null: false
     t.index ["team_id"], name: "index_teams_users_on_team_id"
     t.index ["user_id"], name: "index_teams_users_on_user_id"
-  end
-
-  create_table "threads", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "email_server_id", null: false
-    t.string "gmail_history_id"
-    t.string "snippet"
-    t.string "summary"
-    t.integer "urgency", default: 0, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email_server_id"], name: "index_threads_on_email_server_id"
-    t.index ["user_id"], name: "index_threads_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -134,14 +134,14 @@ ActiveRecord::Schema[7.2].define(version: 2024_02_26_200516) do
   add_foreign_key "actions", "users"
   add_foreign_key "email_servers", "teams"
   add_foreign_key "email_servers", "users"
+  add_foreign_key "email_threads", "email_servers"
+  add_foreign_key "email_threads", "users"
   add_foreign_key "messages", "email_servers"
-  add_foreign_key "messages", "threads"
+  add_foreign_key "messages", "email_threads"
   add_foreign_key "messages", "users"
   add_foreign_key "teams", "workspaces"
   add_foreign_key "teams_users", "teams"
   add_foreign_key "teams_users", "users"
-  add_foreign_key "threads", "email_servers"
-  add_foreign_key "threads", "users"
   add_foreign_key "workspaces", "users", column: "owner_id"
   add_foreign_key "workspaces_users", "users"
   add_foreign_key "workspaces_users", "workspaces"

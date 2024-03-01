@@ -1,7 +1,7 @@
 class Message < ApplicationRecord
   # TODO: in_reply_to
   belongs_to :email_server
-  belongs_to :thread
+  belongs_to :email_thread
   belongs_to :user
 
   has_many :actions
