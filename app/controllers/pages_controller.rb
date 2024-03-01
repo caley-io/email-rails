@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   before_action :authenticate_user!
 
   def inbox
-    @filters = [ "Inbox", "Reply later", "All" ]
+    @filters = ["Inbox", "Reply later", "All"]
 
     # TODO: This is a temporary solution to retrieve the last email server
     @email_server = EmailServer.last

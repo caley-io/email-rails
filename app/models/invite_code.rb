@@ -3,10 +3,7 @@ class InviteCode < ApplicationRecord
 
   class << self
     def claim!(token)
-      if invite_code = find_by(token: token&.downcase)
-        invite_code.destroy!
-        true
-      end
+      find_by(token: token&.downcase)&.destroy!
     end
 
     def generate!
