@@ -8,14 +8,82 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-# Create the default user
-user = User.create_or_find_by!(
-  first_name: "Jeremy", last_name: "Caley", email: "jeremy",
-  password: "password", password_confirmation: "password"
-)
+require "faker"
 
-user.workspaces.create_or_find_by!(name: "Caley", owner_id: user.id)
-puts "Workspace created: #{user.workspaces.first.name}"
+email_providers = ["gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "aol.com"]
 
-user.teams.create_or_find_by!(name: "Caley", workspace_id: user.workspaces.first.id)
-puts "Team created: #{user.teams.first.name}"
+# Create multiple users
+5.times do
+  name = Faker::Name.first_name
+  user = User.create!(
+    first_name: name,
+    last_name: Faker::Name.last_name,
+    email: name,
+    password: "password",
+    password_confirmation: "password"
+  )
+
+  puts "Loading seed data for user: #{user.email}"
+
+  # Create a workspace for each user
+  workspace = Workspace.create!(
+    name: "#{Faker::Company.name} Workspace",
+    avatar_url: Faker::Company.logo,
+    owner: user
+  )
+
+  # Create a team within the workspace
+  team = Team.create!(
+    name: "#{Faker::Team.name} Team",
+    avatar_url: Faker::Company.logo,
+    workspace_id: workspace.id
+  )
+
+  # Associate the user with the team
+  team.users << user
+
+  # Associate the user with the workspace
+  workspace.users << user
+
+  # Create an email server for the user
+  email_server = EmailServer.create!(
+    name: "#{Faker::Company.name} Email Server",
+    email: user.email,
+    provider: email_providers.sample,
+    imap_server: "imap.#{user.email.split("@").last}",
+    imap_port: 993,
+    imap_ssl: true,
+    password: "password",
+    user: user,
+    team: team
+  )
+
+  # Create some sample email threads for the user
+  3.times do
+    email_thread = EmailThread.create!(
+      user: user,
+      email_server: email_server,
+      snippet: Faker::Lorem.sentence,
+      summary: Faker::Lorem.sentence
+    )
+
+    # Create sample messages for each email thread
+    2.times do
+      Message.create!(
+        user: user,
+        email_thread: email_thread,
+        email_server: email_server,
+        sender_name: Faker::Name.name,
+        from: Faker::Internet.email,
+        to: user.email,
+        subject: Faker::Lorem.sentence,
+        snippet: Faker::Lorem.sentence,
+        body: Faker::Lorem.paragraph,
+        summary: Faker::Lorem.sentence,
+        urgency: rand(5)
+      )
+    end
+  end
+end
+
+puts "Seed data created successfully!"
