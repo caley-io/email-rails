@@ -23,6 +23,8 @@ email_providers = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'aol.
     password_confirmation: "password"
   )
 
+  puts "Loading seed data for user: #{user.email}"
+
   # Create a workspace for each user
   workspace = Workspace.create!(
     name: "#{Faker::Company.name} Workspace",
