@@ -66,6 +66,23 @@ email_providers = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'aol.
       snippet: Faker::Lorem.sentence,
       summary: Faker::Lorem.sentence
     )
+
+    # Create sample messages for each email thread
+    2.times do
+      Message.create!(
+        user: user,
+        email_thread: email_thread,
+        email_server: email_server,
+        sender_name: Faker::Name.name,
+        from: Faker::Internet.email,
+        to: user.email,
+        subject: Faker::Lorem.sentence,
+        snippet: Faker::Lorem.sentence,
+        body: Faker::Lorem.paragraph,
+        summary: Faker::Lorem.sentence,
+        urgency: rand(5)
+      )
+    end
   end
 end
 
