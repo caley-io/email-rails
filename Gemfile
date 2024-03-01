@@ -53,3 +53,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "phlex", "~> 1.9"
