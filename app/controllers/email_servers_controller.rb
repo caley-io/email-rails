@@ -25,6 +25,6 @@ class EmailServersController < ApplicationController
   end
 
   def account_type_class
-      EmailServer # Default to EmailServer if type is not provided or invalid
+    EmailServer # Default to EmailServer if type is not provided or invalid
   end
 end

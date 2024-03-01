@@ -17,7 +17,7 @@ module ApplicationHelper
 
   # Wrap view with <%= modal do %> ... <% end %> to have it open in a modal
   # Make sure to add data-turbo-frame="modal" to the link/button that opens the modal
-  def modal(&block)
-    render "shared/base", &block
+  def modal(&)
+    render("shared/base", &)
   end
 end

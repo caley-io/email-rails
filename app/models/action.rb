@@ -4,5 +4,5 @@ class Action < ApplicationRecord
 
   has_one :email_thread, through: :message
 
-  enum status: { todo: 0, in_progress: 1, done: 2 }
+  enum status: {todo: 0, in_progress: 1, done: 2}
 end

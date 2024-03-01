@@ -8,9 +8,9 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-require 'faker'
+require "faker"
 
-email_providers = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'aol.com']
+email_providers = ["gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "aol.com"]
 
 # Create multiple users
 5.times do
@@ -19,7 +19,7 @@ email_providers = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'aol.
     first_name: name,
     last_name: Faker::Name.last_name,
     email: name,
-    password: "password", 
+    password: "password",
     password_confirmation: "password"
   )
 
@@ -50,7 +50,7 @@ email_providers = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'aol.
     name: "#{Faker::Company.name} Email Server",
     email: user.email,
     provider: email_providers.sample,
-    imap_server: "imap.#{user.email.split('@').last}",
+    imap_server: "imap.#{user.email.split("@").last}",
     imap_port: 993,
     imap_ssl: true,
     password: "password",

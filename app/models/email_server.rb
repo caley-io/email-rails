@@ -7,8 +7,8 @@ class EmailServer < ApplicationRecord
   #
   # Returns the IMAP connection object if successful.
   def establish_imap_connection
-    @imap_connection ||= Net::IMAP.new(self.imap_server, port: self.imap_port, ssl: self.imap_ssl)
-    @imap_connection.login(self.email, self.password)
+    @imap_connection ||= Net::IMAP.new(imap_server, port: imap_port, ssl: imap_ssl)
+    @imap_connection.login(email, password)
     @imap_connection
   rescue Net::IMAP::Error => error
     puts "Failed to connect to IMAP: #{error.message}"
@@ -25,10 +25,10 @@ class EmailServer < ApplicationRecord
     return unless @imap_connection
 
     @imap_connection.select("INBOX")
-    email_uids = @imap_connection.uid_search([ "ALL" ])
+    email_uids = @imap_connection.uid_search(["ALL"])
     recent_uids = email_uids.last(20)
 
-    @recent_emails ||= @imap_connection.uid_fetch(recent_uids, [ "ENVELOPE" ]).map do |email_item|
+    @recent_emails ||= @imap_connection.uid_fetch(recent_uids, ["ENVELOPE"]).map do |email_item|
       envelope = email_item.attr["ENVELOPE"]
       {
         date: envelope.date,
