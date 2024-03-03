@@ -42,8 +42,12 @@ export default class extends Controller {
 
   navbarKeydown(event) {
     if(event.key === 'Tab') {
-      event.preventDefault()
-      this.nextFilter()
+      if (this.searchModalOpen || this.userModalOpen || this.userSettingsModalOpen) {
+        event.preventDefault()
+      } else {
+        event.preventDefault()
+        this.nextFilter()
+      }
     }
   }
 }
