@@ -60,6 +60,7 @@ jobs:
       postgres:
         image: postgres
         env:
+          DB_HOST: localhost
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
         ports:
