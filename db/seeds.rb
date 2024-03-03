@@ -10,6 +10,10 @@
 
 require "faker"
 
+caley_workspace_name = "Caley".freeze
+ios_team_name = "iOS".freeze
+ror_team_name = "Ruby on Rails".freeze
+
 user_names = ["user", "user1", "user2", "user3"]
 
 # Create User for Caley workspace
@@ -26,10 +30,9 @@ end
 puts "Created User for Caley workspace - #{user.email}"
 
 # Create Caley workspace
-name = "Caley"
-caley_workspace = Workspace.find_or_create_by!(name:) do |workspace|
+caley_workspace = Workspace.find_or_create_by!(name: caley_workspace_name) do |workspace|
   workspace.assign_attributes({
-    name: name,
+    name: caley_workspace_name,
     avatar_url: Faker::Company.logo,
     owner: user
   })
@@ -37,7 +40,6 @@ end
 puts "Created Workspace - #{caley_workspace.name}"
 
 # Create iOS and Ruby on Rails teams for Caley workspace
-ios_team_name = "iOS"
 ios_team = Team.find_or_create_by!(name: ios_team_name) do |team|
   team.assign_attributes({
     name: ios_team_name,
@@ -47,7 +49,6 @@ ios_team = Team.find_or_create_by!(name: ios_team_name) do |team|
 end
 puts "Created Team - #{ios_team.name}"
 
-ror_team_name = "Ruby on Rails"
 rails_team = Team.find_or_create_by!(name: ror_team_name) do |team|
   team.assign_attributes({
     name: ror_team_name,
@@ -81,16 +82,16 @@ user_names.each do |user_name|
   end
 
   # Associate the user with Caley and personal workspace
-  caley_personal_workspace.users << user
-  caley_workspace.users << user
+  caley_personal_workspace.users << user unless caley_personal_workspace.users.include?(user)
+  caley_workspace.users << user unless caley_workspace.users.include?(user)
 
   # Assign users to teams based on requirements
   if ["user", "user1", "user2"].include?(user_name)
-    rails_team.users << user
+    rails_team.users << user unless rails_team.users.include?(user)
   end
 
   if ["user2", "user3"].include?(user_name)
-    ios_team.users << user
+    ios_team.users << user unless ios_team.users.include?(user)
   end
 
   # Create email servers for each user
@@ -169,7 +170,7 @@ user4_personal_workspace = Workspace.find_or_create_by!(
 )
 
 # Associate the user4 with Caley workspace
-user4_personal_workspace.users << user4
+user4_personal_workspace.users << user4 unless user4_personal_workspace.users.include?(user4)
 
 puts "Loaded workspace for User without team - #{user4.email}"
 
