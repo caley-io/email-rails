@@ -10,9 +10,9 @@
 
 require "faker"
 
-caley_workspace_name = "Caley".freeze
-ios_team_name = "iOS".freeze
-ror_team_name = "Ruby on Rails".freeze
+CALEY_WORKSPACE_NAME = "Caley".freeze
+IOS_TEAM_NAME = "iOS".freeze
+ROR_TEAM_NAME = "Ruby on Rails".freeze
 
 user_names = ["user", "user1", "user2", "user3"]
 
@@ -30,28 +30,27 @@ end
 puts "Created User for Caley workspace - #{user.email}"
 
 # Create Caley workspace
-caley_workspace = Workspace.find_or_create_by!(name: caley_workspace_name) do |workspace|
+caley_workspace = Workspace.find_or_create_by!(name: CALEY_WORKSPACE_NAME) do |workspace|
   workspace.assign_attributes({
-    name: caley_workspace_name,
+    name: CALEY_WORKSPACE_NAME,
     avatar_url: Faker::Company.logo,
     owner: user
   })
 end
 puts "Created Workspace - #{caley_workspace.name}"
 
-# Create iOS and Ruby on Rails teams for Caley workspace
-ios_team = Team.find_or_create_by!(name: ios_team_name) do |team|
+ios_team = Team.find_or_create_by!(name: IOS_TEAM_NAME) do |team|
   team.assign_attributes({
-    name: ios_team_name,
+    name: IOS_TEAM_NAME,
     avatar_url: Faker::Company.logo,
     workspace_id: caley_workspace.id
   })
 end
 puts "Created Team - #{ios_team.name}"
 
-rails_team = Team.find_or_create_by!(name: ror_team_name) do |team|
+rails_team = Team.find_or_create_by!(name: ROR_TEAM_NAME) do |team|
   team.assign_attributes({
-    name: ror_team_name,
+    name: ROR_TEAM_NAME,
     avatar_url: Faker::Company.logo,
     workspace_id: caley_workspace.id
   })
