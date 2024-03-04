@@ -48,6 +48,7 @@ group :development do
   gem "web-console"
   gem "hotwire-livereload"
   gem "ruby-lsp-rails"
+  gem "annotate"
 end
 
 group :test do

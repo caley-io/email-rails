@@ -106,6 +106,9 @@ GEM
   specs:
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
+    annotate (3.2.0)
+      activerecord (>= 3.2, < 8.0)
+      rake (>= 10.4, < 14.0)
     ast (2.4.2)
     base64 (0.2.0)
     bcrypt (3.1.20)
@@ -397,6 +400,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  annotate
   bcrypt (~> 3.1.7)
   bootsnap
   brakeman
