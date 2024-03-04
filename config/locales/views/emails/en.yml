@@ -1,0 +1,9 @@
+---
+en:
+  emails:
+    all:
+      title: All
+    inbox:
+      title: Inbox
+    reply_later:
+      title: Reply later  
