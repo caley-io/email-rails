@@ -1,10 +1,12 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = [ "filter" ]
+  static targets = [ "filter", "listItem" ]
   connect() {
     this.filterIndex = 0
     this.highlightFilter()
+    this.listItemIndex = 0
+    this.highlightListItem()
 
     this.searchModalOpen = false
     this.userModalOpen = false
@@ -28,7 +30,16 @@ export default class extends Controller {
       filter.classList.toggle("text-neutral-900", index === this.filterIndex)
       filter.classList.toggle("bg-neutral-200", index === this.filterIndex)
       filter.classList.toggle("dark:text-white", index === this.filterIndex)
-      filter.classList.toggle("dark:bg-neutral-800/80", index === this.filterIndex)
+      filter.classList.toggle("dark:bg-neutral-800/70", index === this.filterIndex)
+    })
+  }
+
+  highlightListItem() {
+    this.listItemTargets.forEach((listItem, index) => {
+      // listItem.classList.toggle("text-neutral-900", index === this.listItemIndex)
+      listItem.classList.toggle("bg-neutral-200/70", index === this.listItemIndex)
+      // listItem.classList.toggle("dark:text-white", index === this.listItemIndex)
+      listItem.classList.toggle("dark:bg-neutral-800/70", index === this.listItemIndex)
     })
   }
 
@@ -40,13 +51,45 @@ export default class extends Controller {
     this.highlightFilter()
   }
 
-  navbarKeydown(event) {
+  nextListItem() {
+    this.listItemIndex++
+    if (this.listItemIndex >= this.listItemTargets.length) {
+      this.listItemIndex = 0
+    }
+    this.highlightListItem()
+  }
+
+  previousListItem() {
+    this.listItemIndex--
+    if (this.listItemIndex < 0) {
+      this.listItemIndex = this.listItemTargets.length - 1
+    }
+    this.highlightListItem()
+  }
+
+  rootKeydown(event) {
     if(event.key === 'Tab') {
       if (this.searchModalOpen || this.userModalOpen || this.userSettingsModalOpen) {
         event.preventDefault()
       } else {
         event.preventDefault()
         this.nextFilter()
+      }
+    }
+    if(event.key === 'ArrowDown') {
+      if (this.searchModalOpen || this.userModalOpen || this.userSettingsModalOpen) {
+        event.preventDefault()
+      } else {
+        event.preventDefault()
+        this.nextListItem()
+      }
+    }
+    if(event.key === 'ArrowUp') {
+      if (this.searchModalOpen || this.userModalOpen || this.userSettingsModalOpen) {
+        event.preventDefault()
+      } else {
+        event.preventDefault()
+        this.previousListItem()
       }
     }
   }

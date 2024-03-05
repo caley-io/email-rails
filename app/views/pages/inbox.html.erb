@@ -1,12 +1,12 @@
-<div class="h-screen px-4">
-  <% if @email_server.nil? %>
-    <div class="flex flex-col items-center justify-center h-full">
-      <p class="text-lg">Nothing to see here 👀</p>
-      <p class="text-neutral-400">We'll let you know when you have an email to worry about</p>
-    </div>
-  <% elsif @emails.any? %>
-    <%= render partial: "email_list", locals: { emails: @emails } %>
-  <% else %>
-    <p>No emails found.</p>
-  <% end %>
+<div class="h-screen pt-20 px-2">
+  <div>
+    <% if @email_threads.any? %>
+      <%= render partial: "email_list", locals: { threads: @email_threads } %>
+    <% else %>
+      <div class="flex flex-col items-center justify-center h-full">
+        <p class="text-lg">Nothing to see here 👀</p>
+        <p class="text-neutral-400">We'll let you know when you have an email to worry about</p>
+      </div>
+    <% end %>
+  </div>
 </div>

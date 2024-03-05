@@ -4,9 +4,11 @@ class PagesController < ApplicationController
   def inbox
     @filters = ["Inbox", "Reply later", "All"]
 
-    # TODO: This is a temporary solution to retrieve the last email server
-    @email_server = EmailServer.last
-    @emails = @email_server.retrieve_recent_emails if @email_server.present?
+    # TODO: This is a temporary solution to retrieve the last 20 emails
+    # TODO: Add a user setting to toggle email servers
+    @email_server = current_user.email_servers.first
+    @email_threads = @email_server.email_threads.includes(:messages).last(20)
+    # @emails = @email_server.retrieve_recent_emails if @email_server.present?
   end
 
   def done

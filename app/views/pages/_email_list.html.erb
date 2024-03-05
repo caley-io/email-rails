@@ -1,11 +1,19 @@
-    
-<ul class="divide-y divide-gray-200 px-4">
-  <% emails.each do |email| %>
-    <li class="py-4">
-      <p><strong>From:</strong> <%= email[:from].presence || "Unknown" %></p>
-      <p><strong>To:</strong> <%= email[:to].presence || "Unknown" %></p>
-      <p><strong>Date:</strong> <%= email[:date].presence || "Unknown" %></p>
-      <p><strong>Subject:</strong> <%= email[:subject].presence || "No Subject" %></p>
+<ul>
+<!--  TODO: Clean this up-->
+  <% threads.reverse.each do |thread| %>
+    <li data-root-target="listItem"
+        class="flex items-center justify-between mb-0.5 p-2 hover:bg-neutral-200/70 dark:hover:bg-neutral-800/70 rounded-lg">
+      <div class="flex items-center gap-x-1.5">
+        <div class="flex items-center justify-center w-6 h-6 bg-neutral-200 dark:bg-neutral-800 rounded-full">
+          <p class="text-xs font-medium"><%= thread.messages.last.sender_name.first %></p>
+        </div>
+        <p class="w-32 truncate text-[13px] font-medium"><%= thread.messages.last.sender_name %></p>
+        <p class="truncate text-[13px] font-medium text-neutral-500"><%= thread.messages.last.subject.presence || "No Subject" %></p>
+        <p class="truncate text-[13px] font-medium"><%= thread.messages.last.body %></p>
+      </div>
+      <div class="flex justify-end">
+        <p class="truncate text-xs font-medium text-neutral-400 dark:text-neutral-500"><%= format_date(thread.messages.last.created_at) %></p>
+      </div>
     </li>
   <% end %>
 </ul>

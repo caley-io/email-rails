@@ -2,6 +2,9 @@ class EmailServer < ApplicationRecord
   belongs_to :user
   belongs_to :team, optional: true
 
+  has_many :email_threads
+  has_many :messages
+
   # Establishes an IMAP connection using email_server credentials.
   # If the connection fails, it logs the error and returns nil.
   #

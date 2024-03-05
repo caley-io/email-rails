@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :workspaces, through: :workspaces_users
   has_many :teams_users
   has_many :teams, through: :teams_users
+  has_many :email_servers
+  has_many :messages
 
   validates :email, presence: true, uniqueness: true
   normalizes :email, with: ->(email) { email.strip.downcase }
