@@ -4,15 +4,9 @@ updates:
   directory: "/"
   schedule:
     interval: daily
-  automerge: true
-  commit-message:
-    prefix: "[dependabot][automerge]"
   open-pull-requests-limit: 10
 - package-ecosystem: github-actions
   directory: "/"
   schedule:
     interval: daily
-  automerge: true
-  commit-message:
-    prefix: "[github-actions][dependabot][automerge]"
   open-pull-requests-limit: 10
