@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/rails/rails.git
-  revision: 75e34079171217fa8b148ccdbf9d47026af08e8a
+  revision: db30dd6fe71341ac132bb1e850bd4df2596a2803
   branch: main
   specs:
     actioncable (7.2.0.alpha)
@@ -106,6 +106,9 @@ GEM
   specs:
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
+    annotate (3.2.0)
+      activerecord (>= 3.2, < 8.0)
+      rake (>= 10.4, < 14.0)
     ast (2.4.2)
     base64 (0.2.0)
     bcrypt (3.1.20)
@@ -206,7 +209,7 @@ GEM
       net-imap
       net-pop
       net-smtp
-    marcel (1.0.3)
+    marcel (1.0.4)
     matrix (0.4.2)
     mini_mime (1.1.5)
     minitest (5.21.2)
@@ -247,7 +250,7 @@ GEM
     parser (3.3.0.5)
       ast (~> 2.4.1)
       racc
-    pg (1.5.5)
+    pg (1.5.6)
     prism (0.24.0)
     propshaft (0.8.0)
       actionpack (>= 7.0.0)
@@ -309,9 +312,22 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.31.1)
       parser (>= 3.3.0.4)
+    rubocop-minitest (0.34.5)
+      rubocop (>= 1.39, < 2.0)
+      rubocop-ast (>= 1.30.0, < 2.0)
     rubocop-performance (1.20.2)
       rubocop (>= 1.48.1, < 2.0)
       rubocop-ast (>= 1.30.0, < 2.0)
+    rubocop-rails (2.24.0)
+      activesupport (>= 4.2.0)
+      rack (>= 1.1)
+      rubocop (>= 1.33.0, < 2.0)
+      rubocop-ast (>= 1.31.1, < 2.0)
+    rubocop-rails-omakase (1.0.0)
+      rubocop
+      rubocop-minitest
+      rubocop-performance
+      rubocop-rails
     ruby-lsp (0.14.3)
       language_server-protocol (~> 3.17.0)
       prism (>= 0.22.0, < 0.25)
@@ -397,6 +413,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  annotate
   bcrypt (~> 3.1.7)
   bootsnap
   brakeman
@@ -419,6 +436,7 @@ DEPENDENCIES
   puma (>= 5.0)
   rails!
   redis (>= 4.0.1)
+  rubocop-rails-omakase
   ruby-lsp-rails
   selenium-webdriver
   standard

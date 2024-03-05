@@ -20,3 +20,17 @@ class InviteCode < ApplicationRecord
     end
   end
 end
+
+# == Schema Information
+#
+# Table name: invite_codes
+#
+#  id         :bigint           not null, primary key
+#  token      :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+# Indexes
+#
+#  index_invite_codes_on_token  (token) UNIQUE
+#
