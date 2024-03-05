@@ -13,10 +13,10 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true
   normalizes :email, with: ->(email) { email.strip.downcase }
-  validate :validate_email_format, on: [:create, :update]
+  validate :validate_email_format, on: [ :create, :update ]
 
-  validates :password, presence: true, length: {minimum: 6, maximum: 128}, on: :create
-  validates :password, length: {minimum: 6, maximum: 128}, on: :update, allow_blank: true
+  validates :password, presence: true, length: { minimum: 6, maximum: 128 }, on: :create
+  validates :password, length: { minimum: 6, maximum: 128 }, on: :update, allow_blank: true
 
   before_save :postfix_email
 
