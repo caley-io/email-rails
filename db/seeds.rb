@@ -14,7 +14,7 @@ CALEY_WORKSPACE_NAME = "Caley".freeze
 IOS_TEAM_NAME = "iOS".freeze
 ROR_TEAM_NAME = "Ruby on Rails".freeze
 
-user_names = [ "user", "user1", "user2", "user3" ]
+user_names = ["user", "user1", "user2", "user3"]
 
 # Create User for Caley workspace
 email = "user@caley.to"
@@ -85,18 +85,18 @@ user_names.each do |user_name|
   caley_workspace.users << user unless caley_workspace.users.include?(user)
 
   # Assign users to teams based on requirements
-  if [ "user", "user1", "user2" ].include?(user_name)
+  if ["user", "user1", "user2"].include?(user_name)
     rails_team.users << user unless rails_team.users.include?(user)
   end
 
-  if [ "user2", "user3" ].include?(user_name)
+  if ["user2", "user3"].include?(user_name)
     ios_team.users << user unless ios_team.users.include?(user)
   end
 
   # Create email servers for each user
   email_providers = []
 
-  if [ "user", "user1" ].include?(user_name)
+  if ["user", "user1"].include?(user_name)
     2.times { email_providers << "gmail.com" }
   elsif user_name == "user2"
     email_providers << "gmail.com"

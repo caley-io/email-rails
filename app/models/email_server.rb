@@ -28,10 +28,10 @@ class EmailServer < ApplicationRecord
     return unless @imap_connection
 
     @imap_connection.select("INBOX")
-    email_uids = @imap_connection.uid_search([ "ALL" ])
+    email_uids = @imap_connection.uid_search(["ALL"])
     recent_uids = email_uids.last(20)
 
-    @recent_emails ||= @imap_connection.uid_fetch(recent_uids, [ "ENVELOPE" ]).map do |email_item|
+    @recent_emails ||= @imap_connection.uid_fetch(recent_uids, ["ENVELOPE"]).map do |email_item|
       envelope = email_item.attr["ENVELOPE"]
       {
         date: envelope.date,
