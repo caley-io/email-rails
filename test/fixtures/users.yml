@@ -2,13 +2,3 @@ bob:
   first_name: Bob
   last_name: Dylan
   email: bob@caley.io
-
-jakob:
-  first_name: Jakob
-  last_name: Dylan
-  email: jakobdylan@caley.io
-
-keith:
-  first_name: Keith
-  last_name: Richards
-  email: keith@caley.io
