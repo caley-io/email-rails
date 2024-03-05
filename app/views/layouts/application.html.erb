@@ -28,7 +28,7 @@
     <div data-controller="root"
          class="min-h-screen dark:text-white bg-white dark:bg-background-dark">
       <nav data-controller="navbar"
-           data-action="keydown@window->root#navbarKeydown"
+           data-action="keydown@window->root#rootKeydown"
            class="fixed flex items-center justify-between w-full p-2">
         <div class="flex items-center gap-x-1.5">
           <% @filters.each do |f| %>
