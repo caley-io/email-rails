@@ -1,17 +1,8 @@
-caley_team:
-  team: caley_team
-  name: Caley
-  email: bob@bobdylan.com
-  provider: caley
-
-google_team:
-  team: google_team
-  name: Google
-  email: jakobdylan@yahoo.com
-  provider: google
-
-apple_team:
-  team: apple_team
-  name: Apple
-  email: keith@rollingstones.com
-  provider: apple
+caley_email_server:
+  name: Caley Email Server
+  provider: caley.com
+  email: bob@caley.io
+  imap_server: imap.caley.com
+  imap_port: 993
+  imap_ssl: true
+  user: bob
