@@ -20,6 +20,11 @@ class User < ApplicationRecord
 
   before_save :postfix_email
 
+  # TODO: We probably want to normalize this to the DB with a create/update callback
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   private
 
   def validate_email_format
