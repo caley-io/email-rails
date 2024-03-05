@@ -1,0 +1,36 @@
+name: Auto approve and merge Dependabot
+on:
+  pull_request_target:
+    types:
+      - opened
+      - synchronize
+  check_suite:
+    types:
+      - completed
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    steps:
+      - name: Approve pull request
+        uses: hmarr/auto-approve-action@v4
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+
+  auto-merge:
+    needs: check
+    runs-on: ubuntu-latest
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    steps:
+      - name: Merge pull request
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const pr = context.payload.pull_request
+            const repo = context.repo
+            await github.rest.pulls.merge({
+              owner: repo.owner,
+              repo: repo.repo,
+              pull_number: pr.number
+            })
