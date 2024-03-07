@@ -86,5 +86,4 @@ Rails.application.configure do
 
   # Fixes Rails - Turbo - link preload but not used within a few seconds from the window's load event for CSS changes
   config.action_view.preload_links_header = false
-
 end
