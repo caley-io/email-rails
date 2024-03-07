@@ -83,4 +83,8 @@ Rails.application.configure do
   config.hosts = nil
 
   config.action_mailer.default_url_options = {host: "localhost", port: 3000}
+
+  # Fixes Rails - Turbo - link preload but not used within a few seconds from the window's load event for CSS changes
+  config.action_view.preload_links_header = false
+
 end
