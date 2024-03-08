@@ -58,8 +58,13 @@ export default class UserController extends Controller {
     const rootController = this.application.controllers.find(c => c.identifier === "root")
 
     if (event.keyCode === 85) {
-      this.openUserModal()
-      rootController.setUserModalOpen(true)
+      if (rootController.isUserModalOpen()) {
+        this.closeUserModal();
+        rootController.setUserModalOpen(false);
+      } else {
+        this.openUserModal();
+        rootController.setUserModalOpen(true);
+      }
     }
 
     if (event.key === 'Escape') {
