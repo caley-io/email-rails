@@ -3,7 +3,7 @@ source "https://rubygems.org"
 ruby "3.3.0"
 
 # Rails
-gem "rails", github: "rails/rails", branch: "main"
+gem "rails", "~> 7.1.3"
 
 # Drivers
 gem "pg", "~> 1.5"
