@@ -20,13 +20,9 @@ export default class extends Controller {
   isUserModalOpen() {
     return this.userModalOpen;
   }
-  
+
   setUserModalOpen(state) {
     this.userModalOpen = state
-  }
-
-  isUserModalOpen() {
-    return this.userModalOpen;
   }
 
   setUserSettingsModalOpen(state) {
