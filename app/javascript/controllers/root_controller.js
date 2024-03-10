@@ -17,6 +17,10 @@ export default class extends Controller {
     this.searchModalOpen = state
   }
 
+  isUserModalOpen() {
+    return this.userModalOpen;
+  }
+  
   setUserModalOpen(state) {
     this.userModalOpen = state
   }
