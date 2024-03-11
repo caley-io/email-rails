@@ -22,12 +22,11 @@
     <%= turbo_refreshes_with method: :morph, scroll: :preserve %>
     <%= yield :head %>
   </head>
-
-  <body>
-    
+  
+  <body data-controller="theme"
+        data-theme-target="body">
       <main>
         <%= yield %>
       </main>
-
   </body>
 </html>
