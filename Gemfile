@@ -48,7 +48,7 @@ end
 group :development do
   gem "web-console"
   gem "hotwire-livereload"
-  gem "ruby-lsp-rails"
+  gem "solargraph"
   gem "annotate"
 end
 
