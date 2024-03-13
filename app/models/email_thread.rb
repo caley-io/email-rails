@@ -6,7 +6,7 @@ class EmailThread < ApplicationRecord
   has_many :messages
   has_many :actions, through: :messages
 
-  enum urgency: {none: 0, low: 1, medium: 2, high: 3, urgent: 4}, _suffix: true
+  enum urgency: { none: 0, low: 1, medium: 2, high: 3, urgent: 4 }, _suffix: true
 end
 
 # == Schema Information
