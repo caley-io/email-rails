@@ -19,7 +19,7 @@ it's your unfair advantage.
 After cloning the repo, set the app up with:
 
 ```sh
-cd caley
+cd email-rails
 cp .env.example .env
 bundle install
 rails db:setup
