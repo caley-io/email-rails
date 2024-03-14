@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resource :settings, only: %i[edit update]
 
   resources :email_threads, only: [ :new, :show ] do
-    member do
+    collection do
       get :inbox
       get :reply_later
       get :all

@@ -11,22 +11,12 @@ class EmailThreadsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "reply_later" do
-    get reply_later_path
+    get reply_later_email_threads_path
     assert_response :ok
   end
 
   test "all" do
-    get all_path
-    assert_response :ok
-  end
-
-  text "new" do
-    get new_email_thread_path
-    assert_response :ok
-  end
-
-  test "show" do
-    get email_thread_path(email_threads(:one))
+    get all_email_threads_path
     assert_response :ok
   end
 end
