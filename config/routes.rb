@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root "email_threads#inbox"
+
   devise_for :users, controllers: {
     registrations: "users/registrations",
     sessions: "users/sessions"
@@ -6,8 +8,8 @@ Rails.application.routes.draw do
 
   resource :settings, only: %i[edit update]
 
-  resources :emails, only: [ :new ] do
-    member do
+  resources :email_threads, only: [ :new, :show ] do
+    collection do
       get :inbox
       get :reply_later
       get :all
@@ -34,9 +36,6 @@ Rails.application.routes.draw do
   # Render dynamic PWA files from app/views/pwa/*
   get "service-worker", to: "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest", to: "rails/pwa#manifest", as: :pwa_manifest
-
-  # Defines the root path route ("/")
-  root "emails#inbox"
 
   get "all", to: "emails#all", as: :all
   get "reply_later", to: "emails#reply_later", as: :reply_later

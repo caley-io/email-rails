@@ -1,6 +1,6 @@
 require "test_helper"
 
-class EmailsControllerTest < ActionDispatch::IntegrationTest
+class EmailThreadsControllerTest < ActionDispatch::IntegrationTest
   setup do
     sign_in users(:bob)
   end
@@ -11,12 +11,12 @@ class EmailsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "reply_later" do
-    get reply_later_path
+    get reply_later_email_threads_path
     assert_response :ok
   end
 
   test "all" do
-    get all_path
+    get all_email_threads_path
     assert_response :ok
   end
 end

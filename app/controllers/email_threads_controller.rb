@@ -1,8 +1,8 @@
-class EmailsController < ApplicationController
+class EmailThreadsController < ApplicationController
   before_action :authenticate_user!
   before_action :initialize_filters
 
-  layout "email", only: [ :new, :show ]
+  layout "email_thread", only: [ :new, :show ]
 
   def inbox
     # TODO: This is a temporary solution to retrieve the last 20 emails
@@ -17,6 +17,12 @@ class EmailsController < ApplicationController
 
   def all
     # TODO: To be implemented later
+  end
+
+  def new; end
+
+  def show
+    @thread = EmailThread.find(params[:id])
   end
 
   private
