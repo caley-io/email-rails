@@ -23,6 +23,7 @@ class EmailThreadsController < ApplicationController
 
   def show
     @thread = EmailThread.find(params[:id])
+    @messages = @thread.messages.includes(:user)
   end
 
   private
