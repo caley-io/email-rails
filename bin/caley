@@ -140,7 +140,7 @@ elif [ "$1" == "bundle" ]; then
     shift 1
 
     if [ "$EXEC" == "yes" ]; then
-        ARGS+=(exec -u caley)
+        ARGS+=(exec)
         [ ! -t 0 ] && ARGS+=(-T)
         ARGS+=("$APP_SERVICE" "bundle" "$@")
     else
