@@ -1,7 +1,6 @@
 services:
   web:
-    build:
-      dockerfile: Dockerfile
+    build: .
     environment:
       - DB_HOST=db
       - POSTGRES_USER=postgres
@@ -10,8 +9,19 @@ services:
       - 3000:3000
     stdin_open: true
     tty: true
+    volumes:
+      - .:/caley-email
     depends_on:
       - db
+      - tailwind
+
+  tailwind:
+    build:
+      context: "."
+    tty: true
+    command: "bin/rails tailwindcss:watch"
+    volumes:
+      - .:/caley-email
 
   db:
     image: postgres:14

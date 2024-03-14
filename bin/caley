@@ -1,0 +1,206 @@
+#!/usr/bin/env bash
+
+# This bin script is heavily inspired by Laravel Sail
+# https://github.com/laravel/sail/
+
+# Source the ".env" file so Rail's environment variables are available...
+# shellcheck source=/dev/null
+if [ -n "$APP_ENV" ] && [ -f ./.env."$APP_ENV" ]; then
+  source ./.env."$APP_ENV";
+elif [ -f ./.env ]; then
+  source ./.env;
+fi
+
+export APP_SERVICE=${APP_SERVICE:-"web"}
+
+# Function that prints the available commands...
+function display_help {
+    echo "Caley"
+    echo
+    echo "Usage:" >&2
+    echo "  caley COMMAND [options] [arguments]"
+    echo
+    echo "Unknown commands are passed to the docker-compose binary."
+    echo
+    echo "docker-compose Commands:"
+    echo "  caley up        Start the application"
+    echo "  caley up -d     Start the application in the background"
+    echo "  caley stop      Stop the application"
+    echo "  caley restart   Restart the application"
+    echo "  caley ps        Display the status of all containers"
+    echo
+    echo "Rails Commands:"
+    echo "  sail rails ...     Run a Rails command"
+    echo "  caley rails console"
+    echo
+    echo "Bundler Commands:"
+    echo "  bundle ...         Run a Bundler command"
+    echo "  bundle install"
+    echo
+    echo "Container CLI:"
+    echo "  caley shell        Start a shell session within the application container"
+    echo "  caley bash         Alias for 'caley shell'"
+    echo "  caley root-shell   Start a root shell session within the application container"
+    echo "  caley root-bash    Alias for 'caley root-shell'"
+    echo
+    echo "Binaries:"
+    echo "  caley bin ...   Run binary scripts from the bin directory"
+    echo 
+
+    exit 1
+}
+
+# Proxy the "help" command...
+if [ $# -gt 0 ]; then
+    if [ "$1" == "help" ] || [ "$1" == "-h" ] || [ "$1" == "-help" ] || [ "$1" == "--help" ]; then
+        display_help
+    fi
+else
+    display_help
+fi
+
+# Function that outputs Caley is not running...
+function caley_is_not_running {
+    echo "Caley is not running." >&2
+    echo "" >&2
+    echo "You may Caley using the following commands: './bin/caley up' or './bin/caley up -d'" >&2
+
+    exit 1
+}
+
+# Define Docker Compose command prefix...
+if docker compose &> /dev/null; then
+    DOCKER_COMPOSE=(docker compose)
+else
+    DOCKER_COMPOSE=(docker-compose)
+fi
+
+DOCKER_COMPOSE+=(-f "compose.yml")
+
+EXEC="yes"
+
+# Ensure that Docker is running...
+if ! docker info > /dev/null 2>&1; then
+    echo "Docker is not running." >&2
+
+    exit 1
+fi
+
+# Determine if Caley is currently up...
+if "${DOCKER_COMPOSE[@]}" ps "$APP_SERVICE" 2>&1 | grep 'Exit\|exited'; then
+    echo "Shutting down old Caley processes..." >&2
+
+    "${DOCKER_COMPOSE[@]}" down > /dev/null 2>&1
+
+    EXEC="no"
+elif [ -z "$("${DOCKER_COMPOSE[@]}" ps -q)" ]; then
+    EXEC="no"
+fi
+
+ARGS=()
+
+# Proxy Rails commands to the "rails" binary on the application container...
+if [ "$1" == "rails" ]; then
+    shift 1
+
+    if [ "$EXEC" == "yes" ]; then
+        ARGS+=(exec -u caley)
+        [ ! -t 0 ] && ARGS+=(-T)
+        ARGS+=("$APP_SERVICE" "rails" "$@")
+    else
+        caley_is_not_running
+    fi
+
+# Proxy vendor binary commands on the application container...
+elif [ "$1" == "bin" ]; then
+    shift 1
+
+    if [ "$EXEC" == "yes" ]; then
+        ARGS+=(exec -u caley)
+        [ ! -t 0 ] && ARGS+=(-T)
+        ARGS+=("$APP_SERVICE" ./bin/"$@")
+    else
+        caley_is_not_running
+    fi
+
+# Proxy docker-compose commands to the docker-compose binary on the application container...
+elif [ "$1" == "docker-compose" ]; then
+    shift 1
+
+    if [ "$EXEC" == "yes" ]; then
+        ARGS+=(exec -u caley)
+        [ ! -t 0 ] && ARGS+=(-T)
+        ARGS+=("$APP_SERVICE" "${DOCKER_COMPOSE[@]}")
+    else
+        caley_is_not_running
+    fi
+
+# Proxy Bundler commands to the "bundle" binary on the application container...
+elif [ "$1" == "bundle" ]; then
+    shift 1
+
+    if [ "$EXEC" == "yes" ]; then
+        ARGS+=(exec -u caley)
+        [ ! -t 0 ] && ARGS+=(-T)
+        ARGS+=("$APP_SERVICE" "bundle" "$@")
+    else
+        caley_is_not_running
+    fi
+
+# Initiate a PostgreSQL CLI terminal session within the "pgsql" container...
+elif [ "$1" == "psql" ]; then
+    shift 1
+
+    if [ "$EXEC" == "yes" ]; then
+        ARGS+=(exec)
+        [ ! -t 0 ] && ARGS+=(-T)
+        ARGS+=(db bash -c)
+        ARGS+=("PGPASSWORD=\${PGPASSWORD} psql -U \${POSTGRES_USER} \${POSTGRES_DB}")
+    else
+        caley_is_not_running
+    fi
+
+# Initiate a Bash shell within the application container...
+elif [ "$1" == "shell" ] || [ "$1" == "bash" ]; then
+    shift 1
+
+    if [ "$EXEC" == "yes" ]; then
+        ARGS+=(exec)
+        [ ! -t 0 ] && ARGS+=(-T)
+        ARGS+=("$APP_SERVICE" bash "$@")
+    else
+        caley_is_not_running
+    fi
+
+# Initiate a root user Bash shell within the application container...
+elif [ "$1" == "root-shell" ] || [ "$1" == "root-bash" ]; then
+    shift 1
+
+    if [ "$EXEC" == "yes" ]; then
+        ARGS+=(exec -u root)
+        [ ! -t 0 ] && ARGS+=(-T)
+        ARGS+=("$APP_SERVICE" bash "$@")
+    else
+        caley_is_not_running
+    fi
+
+# TODO: Initiate a Redis CLI terminal session within the "redis" container...
+# Redis isn't installed in the container yet but will be soon.
+elif [ "$1" == "redis" ] ; then
+    shift 1
+
+    if [ "$EXEC" == "yes" ]; then
+        ARGS+=(exec)
+        [ ! -t 0 ] && ARGS+=(-T)
+        ARGS+=(redis redis-cli)
+    else
+        caley_is_not_running
+    fi
+
+# Pass unknown commands to the "docker-compose" binary...
+else
+    ARGS+=("$@")
+fi
+
+# Run Docker Compose with the defined arguments...
+"${DOCKER_COMPOSE[@]}" "${ARGS[@]}"
