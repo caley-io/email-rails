@@ -37,9 +37,9 @@
               <h1 class="text-md font-medium">Theme</h1>
               <p class="text-xs text-neutral-600 dark:text-neutral-400">Set your app theme</p>
             </div>
-            <div class="flex gap-x-1">
+            <div data-controller="theme-buttons" class="flex gap-x-1">
               <div data-action="click->theme#setDarkTheme"
-                   data-theme-target="moon"
+                   data-theme-buttons-target="moon"
                    class="p-0.5 border-2 border-transparent hover:border-emerald-300 rounded-xl">
                 <div class="flex items-center gap-x-1 pl-2 pr-3 py-1.5 text-sm font-medium text-sky-800 bg-indigo-200 rounded-lg cursor-pointer">
                   <div>
@@ -51,7 +51,7 @@
                 </div>
               </div>
               <div data-action="click->theme#setLightTheme"
-                   data-theme-target="sun"
+                   data-theme-buttons-target="sun"
                    class="p-0.5 border-2 border-transparent hover:border-emerald-300 rounded-xl">
                 <div class="flex items-center gap-x-1 pl-2 pr-3 py-1.5 text-sm font-medium text-amber-800 bg-amber-100 rounded-lg cursor-pointer">
                   <div>

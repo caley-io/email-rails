@@ -6,6 +6,14 @@ Rails.application.routes.draw do
 
   resource :settings, only: %i[edit update]
 
+  resources :emails, only: [ :new ] do
+    member do
+      get :inbox
+      get :reply_later
+      get :all
+    end
+  end
+
   resources :email_servers
 
   # TODO: Do we need this?
