@@ -1,1 +1,13 @@
 <%= @thread.id %>
+<div class="grid grid-cols-12">
+  <div class="col-span-6 col-start-4">
+    <div class="flex items-center gap-x-1.5">
+      <div class="flex items-center justify-center w-6 h-6 rounded-full bg-neutral-700">
+        <p class="text-xs font-medium">
+          <%= @messages.first.user.first_name.first %>
+        </p>
+      </div>
+      <%= @messages.first.subject %>
+    </div>
+  </div>
+</div>
