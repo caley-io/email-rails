@@ -1,0 +1,30 @@
+name: Dependabot auto-merge
+on:
+  pull_request_target:
+    paths:
+      - "Gemfile*"
+      - package.json
+
+permissions:
+  pull-requests: write
+  contents: write
+
+jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    steps:
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v1.6.0
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Enable auto-merge for Dependabot PRs
+        if: ${{ steps.metadata.outputs.update-type != 'version-update:semver-major' }}
+        run: |
+          gh pr merge --auto --merge "$PR_URL"
+          gh pr review "$PR_URL" --approve --body "Approved by [bot](https://github.com/caley-io/email-rails/actions/workflows/dependabot_auto_merge.yml)"
+          gh pr edit "$PR_URL" --add-label "Ship it!"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
