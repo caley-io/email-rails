@@ -5,6 +5,7 @@ module ApplicationHelper
 
   # TODO: Add user setting for 24hr/12hr time format
   def format_date(created_at)
+    # TODO: This is buggy
     if created_at.to_date == Date.today
       created_at.strftime("%H:%M %p")
     else
