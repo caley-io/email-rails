@@ -13,10 +13,14 @@ class EmailThreadsController < ApplicationController
 
   def reply_later
     # TODO: To be implemented later
+    @email_server = current_user.email_servers.first
+    @email_threads = @email_server.email_threads.includes(:messages)
   end
 
   def all
     # TODO: To be implemented later
+    @email_server = current_user.email_servers.first
+    @email_threads = @email_server.email_threads.includes(:messages)
   end
 
   def new; end
