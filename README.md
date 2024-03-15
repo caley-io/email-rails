@@ -1,5 +1,6 @@
 # Caley Email
 
+*designs are a WIP 😉
 <img width="1492" alt="inbox-ui" src="https://github.com/caley-io/email-rails/assets/93844519/e977226b-0839-4f4b-9024-1e26397bf222">
 
 <b>Get involved: [Discord](https://discord.gg/caley) • [Website](https://caley.io) • [Issues](https://github.com/caley-io/caley/issues)</b>
