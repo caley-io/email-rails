@@ -1,22 +1,7 @@
-<!--  TODO: Clean this file up-->
 <div>
   <% threads.reverse.each do |thread| %>
     <%= link_to email_thread_path(thread.id) do %>
-      <!-- TODO: Replace border-b with a divider -->
-      <div data-root-target="listItem"
-          class="flex items-center justify-between px-2 py-2.5 hover:bg-neutral-100 dark:hover:bg-neutral-800/70 border-b border-neutral-100 dark:border-neutral-800">
-        <div class="flex items-center gap-x-2 truncate text-[13px]">
-          <!-- TODO: We'll eventually set a random enum color for the placeholder when a user is created -->
-          <%= render "medium_profile_placeholder", color: :red, name: thread.messages.last.sender_name.first %>
-          <!-- TODO: Separate sender_name into first/last and truncate last -->
-          <p class="w-40 text-slate-800 dark:text-slate-200"><%= thread.messages.last.sender_name %></p>
-          <p class="text-neutral-500 truncate"><%= thread.messages.last.subject.presence || "No Subject" %></p>
-          <p class="truncate"><%= thread.messages.last.body %></p>
-        </div>
-        <div class="flex justify-end ml-2.5">
-          <p class="truncate text-xs font-medium text-neutral-400 dark:text-neutral-500"><%= format_date(thread.messages.last.created_at) %></p>
-        </div>
-      </div>
+      <%= render "email_list_item", message: thread.messages.last %>
     <% end %>
   <% end %>
 </div>
