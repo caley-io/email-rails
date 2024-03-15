@@ -34,6 +34,7 @@ export default class SearchController extends Controller {
     this.searchItemTargets.forEach((element, idx) => {
       element.classList.toggle('bg-neutral-200', idx === this.listItemIndex)
       element.classList.toggle('dark:bg-neutral-700/50', idx === this.listItemIndex)
+      element.classList.toggle('dark:text-white', idx === this.listItemIndex)
     })
   }
 
