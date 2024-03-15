@@ -19,4 +19,15 @@ class EmailThreadsControllerTest < ActionDispatch::IntegrationTest
     get all_email_threads_path
     assert_response :ok
   end
+
+  test "new" do
+    get new_email_thread_path
+    assert_response :ok
+  end
+
+  # TODO: Create fixtures for email_threads
+  # test "show" do
+  #   get email_thread_path(email_threads(:one))
+  #   assert_response :ok
+  # end
 end
