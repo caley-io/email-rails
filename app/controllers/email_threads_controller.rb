@@ -8,7 +8,7 @@ class EmailThreadsController < ApplicationController
     # TODO: This is a temporary solution to retrieve the last 20 emails
     # TODO: Add a user setting to toggle email servers
     @email_server = current_user.email_servers.first
-    @email_threads = @email_server.email_threads.includes(:messages).last(20)
+    @email_threads = @email_server.email_threads.includes(:messages)
   end
 
   def reply_later

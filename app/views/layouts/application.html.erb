@@ -29,29 +29,36 @@
   </head>
 
   <body data-controller="theme"
-        data-theme-target="body">
+        data-theme-target="body"
+  >
     <div data-controller="root"
          class="min-h-screen dark:text-white bg-white dark:bg-background-dark">
-      <nav data-controller="navbar"
-           data-action="keydown@window->root#rootKeydown"
-           class="fixed flex items-center justify-between w-full p-2">
-        <div class="flex items-center gap-x-1.5">
-          <% @filters.each do |f| %>
-            <div data-root-target="filter"
-                 class="flex items-center h-7 px-2 text-neutral-400 hover:text-neutral-900  hover:bg-neutral-200 hover:dark:text-white hover:dark:bg-neutral-800/80 backdrop-filter backdrop-blur rounded-md">
-              <p class="text-xs font-medium"><%= f %></p>
-            </div>
-          <% end %>
+      <div class="fixed w-screen bg-white dark:bg-background-dark">
+        <nav data-controller="navbar"
+            data-action="keydown@window->root#rootKeydown"
+            class="flex items-center justify-between w-full p-1 border-b dark:border-neutral-800">
+          <div class="flex items-center gap-x-1">
+            <% @filters.each do |filter| %>
+              <div data-root-target="filter"
+                  class="flex items-center h-8 px-3 text-neutral-400 hover:text-neutral-900 hover:bg-neutral-200 hover:dark:text-white dark:hover:bg-neutral-700/50 backdrop-filter backdrop-blur rounded-lg">
+                <% if filter == 'Inbox' %>
+                  <p class="text-xs font-medium"><%= filter %><span class="ml-1 text-sky-500"><%= @email_threads.count if filter == 'Inbox' %></span></p>
+                <% else %>
+                  <p class="text-xs font-medium"><%= filter %></p>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </nav>
+        <div class="flex justify-between w-full px-2 py-3 border-b dark:border-neutral-800">
+          <div class="flex items-center gap-x-1.5">
+            <input type="checkbox" disabled class="bg-neutral-100 border-neutral-200 dark:bg-neutral-800 border dark:border-neutral-700 rounded">
+            <p class="text-xs text-neutral-300 dark:text-neutral-500">Select all</p>
+          </div>
+          <p class="text-neutral-400 dark:text-neutral-600 text-xs"><%= @email_threads.count %> emails</p>
         </div>
-
-<!--            TODO: We'll add custom filters in the near future -->
-<!--            <div>-->
-<!--              <div class="flex items-center justify-center w-7 h-7 hover:dark:bg-neutral-800/80 backdrop-filter backdrop-blur rounded-lg">-->
-<!--                <p class="font-medium text-neutral-400 group-hover:text-white">+</p>-->
-<!--              </div>-->
-<!--            </div>-->
-      </nav>
-      <main class="min-h-screen">
+      </div>
+      <main class="bg-white dark:bg-background-dark">
         <%= yield %>
       </main>
 

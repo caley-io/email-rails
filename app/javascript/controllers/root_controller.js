@@ -30,7 +30,7 @@ export default class extends Controller {
       filter.classList.toggle("text-neutral-900", index === this.filterIndex)
       filter.classList.toggle("bg-neutral-200", index === this.filterIndex)
       filter.classList.toggle("dark:text-white", index === this.filterIndex)
-      filter.classList.toggle("dark:bg-neutral-800/70", index === this.filterIndex)
+      filter.classList.toggle("dark:bg-neutral-700/50", index === this.filterIndex)
     })
   }
 
@@ -39,7 +39,7 @@ export default class extends Controller {
       // listItem.classList.toggle("text-neutral-900", index === this.listItemIndex)
       listItem.classList.toggle("bg-neutral-200/70", index === this.listItemIndex)
       // listItem.classList.toggle("dark:text-white", index === this.listItemIndex)
-      listItem.classList.toggle("dark:bg-neutral-800/70", index === this.listItemIndex)
+      listItem.classList.toggle("dark:bg-neutral-700/50", index === this.listItemIndex)
     })
   }
 

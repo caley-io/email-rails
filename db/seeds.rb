@@ -118,7 +118,7 @@ user_names.each do |user_name|
     )
 
     # Create some sample email threads for each email server
-    3.times do
+    20.times do
       email_thread = EmailThread.create!(
         user: user,
         email_server: email_server,
