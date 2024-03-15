@@ -1,17 +1,18 @@
 <div data-menu-target="searchModal"
      data-search-target="searchModal"
-     class="hidden absolute bottom-16">
+     class="hidden fixed top-36">
   <div class="flex justify-center w-screen">
-    <div class="dark:bg-neutral-800/80 backdrop-filter backdrop-blur border dark:border-neutral-700 rounded-xl shadow-md">
+    <div class="dark:bg-neutral-800/80 backdrop-filter backdrop-blur border dark:border-neutral-700 rounded-xl shadow-xl">
       <div class="p-1 border-b border-neutral-200 dark:border-neutral-700">
         <label>
-          <input type="text" placeholder="Search inbox" class="w-[500px] px-2 py-1 bg-transparent border-none focus:ring-0 rounded-lg placeholder:text-sm placeholder:text-neutral-600">
+          <!-- TODO: Fix nonresponsive width -->
+          <input type="text" placeholder="Search inbox" class="w-[600px] px-2 py-1.5 bg-transparent border-none focus:ring-0 rounded-lg text-lg placeholder:text-lg placeholder:text-neutral-400">
         </label>
       </div>
       <div class="flex flex-col gap-y-0.5 p-1">
-        <div data-search-target="searchItem" class="flex items-center justify-between p-2 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700/50 rounded-lg">
+        <div data-search-target="searchItem" class="flex items-center justify-between p-2.5 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700/50 rounded-lg">
           <div>
-            <p class="text-xs font-medium">New email</p>
+            <p class="text-sm">Create filter with prompt</p>
           </div>
           <div>
             <div class="flex items-center justify-center w-5 h-5 bg-neutral-300 dark:bg-neutral-600 rounded">
@@ -19,9 +20,9 @@
             </div>
           </div>
         </div>
-        <div data-search-target="searchItem" class="flex items-center justify-between p-2 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700/50 rounded-lg">
+        <div data-search-target="searchItem" class="flex items-center justify-between p-2.5 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700/50 rounded-lg">
           <div>
-            <p class="text-xs font-medium">Invite team</p>
+            <p class="text-sm">Create filter</p>
           </div>
           <div>
             <div class="flex items-center justify-center w-5 h-5 bg-neutral-300 dark:bg-neutral-600 rounded">
