@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Caley.to" %></title>
     <% if Rails.env.development? %>
       <%= favicon_link_tag 'dev-icon.png' %>
     <% else %>
       <%= favicon_link_tag 'logo-dark.png' %>
     <% end %>
+
+    <title><%= content_for(:title) || "Caley.to" %></title>
 
     <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -17,9 +18,10 @@
     <%= csp_meta_tag %>
 
     <!-- <link rel="manifest" href="/manifest.json"> -->
-    <link rel="apple-touch-icon" href="/icon.png">
+
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
     <%= javascript_importmap_tags %>
     <%= hotwire_livereload_tags if Rails.env.development? %>
 
@@ -35,7 +37,6 @@
         <%= render 'shared/command_palette' %>
         <%= render 'shared/navigation/floating_menu' %>
         <%= render 'shared/modals/settings' %>
-        <%= render 'shared/modals/user' %>
       </div>
 
       <div class="fixed w-screen bg-white dark:bg-background-dark">
