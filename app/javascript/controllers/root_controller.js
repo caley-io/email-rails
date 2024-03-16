@@ -2,10 +2,9 @@ import { Controller } from "@hotwired/stimulus"
 
 // TODO: Refactor this entire file
 export default class extends Controller {
-  static targets = [ "filter", "listItem", "commandPalette", "commandPaletteItem" ]
+  static targets = [ "filter", "listItem", "commandPalette", "commandPaletteItem", "userModal", "userSettingsModal" ]
   connect() {
     this.commandPaletteOpen =
-    this.userModalOpen =
     this.userSettingsModalOpen = false
 
     this.filterIndex =
@@ -19,11 +18,11 @@ export default class extends Controller {
   // Command Palette
   openCommandPalette() {
     this.commandPaletteTarget.classList.remove('hidden')
+    this.highlightPaletteItem()
     this.commandPaletteOpen = true
   }
 
   closeCommandPalette() {
-    console.log("closing command palette")
     this.commandPaletteTarget.classList.add('hidden')
     this.commandPaletteOpen = false
   }
@@ -132,12 +131,16 @@ export default class extends Controller {
 
     if (event.key === 'Escape') {
       this.closeCommandPalette()
+      this.closeUserModal()
     }
 
     // "/"
     if (event.keyCode === 191) {
-      this.openCommandPalette(true)
-      this.highlightPaletteItem()
+      if (this.userModalOpen || this.commandPaletteOpen) {
+        event.preventDefault()
+      } else {
+        this.openCommandPalette()
+      }
     }
   }
 }

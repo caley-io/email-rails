@@ -1,5 +1,4 @@
-<nav data-controller="navbar"
-    class="flex items-center justify-between w-full p-1 border-b dark:border-neutral-800">
+<nav class="flex items-center justify-between w-full p-1 border-b dark:border-neutral-800">
   <div class="flex items-center gap-x-1">
     <% @filters.each do |filter| %>
       <div data-root-target="filter"
@@ -11,5 +10,12 @@
         <% end %>
       </div>
     <% end %>
+  </div>
+  <div data-controller="user-dropdown">
+    <div data-action="click->user-dropdown#toggleDropdown"
+         class="flex items-center justify-center w-8 h-8 text-neutral-400 hover:text-neutral-900 dark:hover:text-white rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-700 cursor-pointer">
+      <%= render 'medium_profile_placeholder', color: :yellow, name: current_user.first_name.first %>
+    </div>
+    <%= render 'shared/modals/user' %>
   </div>
 </nav>

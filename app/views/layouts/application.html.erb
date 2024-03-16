@@ -30,19 +30,12 @@
 
   <body data-controller="theme" data-theme-target="body">
     <div data-controller="root" class="min-h-screen dark:text-white bg-white dark:bg-background-dark">
-      <!-- TODO: Clean this mess up -->
+      <!-- TODO: Remove menu controller -->
       <div data-controller="menu">
-        <%= render 'shared/navigation/floating_menu' %>
-
-        <div data-controller="user" data-action="keydown@window->user#userModalKeydown">
-          <%= render 'shared/modals/user' %>
-        </div>
-
         <%= render 'shared/command_palette' %>
-
-        <div>
-          <%= render 'shared/modals/settings' %>
-        </div>
+        <%= render 'shared/navigation/floating_menu' %>
+        <%= render 'shared/modals/settings' %>
+        <%= render 'shared/modals/user' %>
       </div>
 
       <div class="fixed w-screen bg-white dark:bg-background-dark">

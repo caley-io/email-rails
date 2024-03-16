@@ -1,12 +1,13 @@
 <div class="fixed bottom-3">
   <div class="flex justify-center w-screen">
     <div class="flex items-center gap-x-1 p-1 dark:bg-neutral-800/80 backdrop-filter backdrop-blur border border-neutral-200 dark:border-neutral-700 rounded-xl shadow-lg">
-      <div data-action="click->menu#toggleUserModal"
-           class="flex items-center justify-center w-8 h-8 text-neutral-400 hover:text-neutral-900 dark:hover:text-white rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-700 cursor-pointer">
-        <div class="flex items-center justify-center w-6 h-6 bg-indigo-200 dark:bg-sky-200 rounded-full">
-          <p class="text-neutral-900 text-xs font-medium"><%= current_user.first_name.first %></p>
+      <%= link_to root_path do %>
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400 hover:text-neutral-900 dark:hover:text-white rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-700 cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.75 10.75v4a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4v-4m-14 0v-1.5a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v1.5m-14 0h4m10 0h-4m-6 0h6m-6 0a1.5 1.5 0 0 0 1.5 1.5h3a1.5 1.5 0 0 0 1.5-1.5"></path>
+          </svg>
         </div>
-      </div>
+      <% end %>
       <div data-action="click->menu#toggleSearchModal"
            class="flex items-center justify-center w-8 h-8 text-neutral-400 hover:text-neutral-900 dark:hover:text-white rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-700 cursor-pointer"
       >
