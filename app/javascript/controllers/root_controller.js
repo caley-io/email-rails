@@ -1,20 +1,38 @@
 import { Controller } from "@hotwired/stimulus"
 
+// TODO: Refactor this entire file
 export default class extends Controller {
-  static targets = [ "filter", "listItem" ]
+  static targets = [ "filter", "listItem", "commandPalette", "commandPaletteItem" ]
   connect() {
-    this.filterIndex = 0
-    this.highlightFilter()
-    this.listItemIndex = 0
-    this.highlightListItem()
-
-    this.searchModalOpen = false
-    this.userModalOpen = false
+    this.commandPaletteOpen =
+    this.userModalOpen =
     this.userSettingsModalOpen = false
+
+    this.filterIndex =
+    this.listItemIndex =
+    this.paletteItemIndex = 0
+
+    this.highlightFilter()
+    this.highlightListItem()
   }
 
-  setSearchModalOpen(state) {
-    this.searchModalOpen = state
+  // Command Palette
+  openCommandPalette() {
+    this.commandPaletteTarget.classList.remove('hidden')
+    this.commandPaletteOpen = true
+  }
+
+  closeCommandPalette() {
+    console.log("closing command palette")
+    this.commandPaletteTarget.classList.add('hidden')
+    this.commandPaletteOpen = false
+  }
+
+  // TODO: We probably don't need to iterate over all the search items each time
+  highlightPaletteItem() {
+    this.commandPaletteItemTargets.forEach((element, idx) => {
+      element.setAttribute('aria-selected', idx === this.paletteItemIndex)
+    })
   }
 
   setUserModalOpen(state) {
@@ -36,9 +54,7 @@ export default class extends Controller {
 
   highlightListItem() {
     this.listItemTargets.forEach((listItem, index) => {
-      // listItem.classList.toggle("text-neutral-900", index === this.listItemIndex)
       listItem.classList.toggle("bg-neutral-200/70", index === this.listItemIndex)
-      // listItem.classList.toggle("dark:text-white", index === this.listItemIndex)
       listItem.classList.toggle("dark:bg-neutral-700/50", index === this.listItemIndex)
     })
   }
@@ -67,30 +83,61 @@ export default class extends Controller {
     this.highlightListItem()
   }
 
+  // TODO: Switch case for keydown events
   rootKeydown(event) {
     if(event.key === 'Tab') {
-      if (this.searchModalOpen || this.userModalOpen || this.userSettingsModalOpen) {
+      if (this.commandPaletteOpen || this.userModalOpen || this.userSettingsModalOpen) {
         event.preventDefault()
       } else {
         event.preventDefault()
         this.nextFilter()
       }
     }
+
     if(event.key === 'ArrowDown') {
-      if (this.searchModalOpen || this.userModalOpen || this.userSettingsModalOpen) {
+      if (this.commandPaletteOpen) {
         event.preventDefault()
+        this.paletteItemIndex++
+        if (this.paletteItemIndex >= this.commandPaletteItemTargets.length) {
+          this.paletteItemIndex = 0
+        }
+        this.highlightPaletteItem()
+      } else if (this.userModalOpen) {
+          event.preventDefault()
+      } else if (this.userSettingsModalOpen) {
+          event.preventDefault()
       } else {
-        event.preventDefault()
-        this.nextListItem()
+          event.preventDefault()
+          this.nextListItem()
       }
     }
+
     if(event.key === 'ArrowUp') {
-      if (this.searchModalOpen || this.userModalOpen || this.userSettingsModalOpen) {
+      if (this.commandPaletteOpen) {
         event.preventDefault()
+        this.paletteItemIndex--
+        if (this.paletteItemIndex < 0) {
+          this.paletteItemIndex = this.commandPaletteItemTargets.length - 1
+        }
+        this.highlightPaletteItem()
+      } else if (this.userModalOpen) {
+          event.preventDefault()
+      } else if (this.userSettingsModalOpen) {
+          event.preventDefault()
       } else {
-        event.preventDefault()
-        this.previousListItem()
+          event.preventDefault()
+          this.previousListItem()
       }
+    }
+
+    if (event.key === 'Escape') {
+      this.closeCommandPalette()
+    }
+
+    // "/"
+    if (event.keyCode === 191) {
+      this.openCommandPalette(true)
+      this.highlightPaletteItem()
     }
   }
 }

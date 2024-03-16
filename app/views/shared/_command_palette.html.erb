@@ -1,8 +1,9 @@
-<div data-menu-target="searchModal"
-     data-search-target="searchModal"
-     class="hidden fixed top-36">
+<div data-root-target="commandPalette"
+     data-menu-target="searchModal"
+     data-action="keydown@window->root#rootKeydown"
+     class="hidden fixed top-44">
   <div class="flex justify-center w-screen">
-    <div class="dark:bg-neutral-800/80 backdrop-filter backdrop-blur border dark:border-neutral-700 rounded-xl shadow-xl">
+    <div class="dark:bg-neutral-800/90 backdrop-filter backdrop-blur border dark:border-neutral-700 rounded-xl shadow-xl">
       <div class="p-1 border-b border-neutral-200 dark:border-neutral-700">
         <label>
           <!-- TODO: Fix nonresponsive width -->
@@ -10,7 +11,10 @@
         </label>
       </div>
       <div class="flex flex-col gap-y-0.5 p-1">
-        <div data-search-target="searchItem" class="flex items-center justify-between p-2.5 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700/50 rounded-lg">
+        <p class="p-1 text-xs font-medium dark:text-neutral-500">Actions</p>
+        <div aria-selected="false"
+          class="flex items-center justify-between p-2.5 text-neutral-600 dark:text-neutral-400 aria-selected:text-black aria-selected:dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-700/50 aria-selected:bg-neutral-200 aria-selected:dark:bg-neutral-700/50 rounded-lg"
+          data-root-target="commandPaletteItem">
           <div>
             <p class="text-sm">Create filter with prompt</p>
           </div>
@@ -20,7 +24,9 @@
             </div>
           </div>
         </div>
-        <div data-search-target="searchItem" class="flex items-center justify-between p-2.5 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700/50 rounded-lg">
+        <div aria-selected="false"
+          class="flex items-center justify-between p-2.5 text-neutral-600 dark:text-neutral-400 aria-selected:text-black aria-selected:dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-700/50 aria-selected:bg-neutral-200 aria-selected:dark:bg-neutral-700/50 rounded-lg"
+          data-root-target="commandPaletteItem">
           <div>
             <p class="text-sm">Create filter</p>
           </div>
