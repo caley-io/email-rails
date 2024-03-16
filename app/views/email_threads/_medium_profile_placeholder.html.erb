@@ -1,10 +1,10 @@
 <% case color %>
   <% when :blue %>
-    <div class="flex items-center justify-center w-[22px] h-[22px] bg-sky-200 rounded-full">
+    <div class="flex items-center justify-center w-[22px] h-[22px] bg-sky-200 rounded-lg">
       <p class="text-xs font-medium text-sky-800"><%= name %></p>
     </div>
   <% when :green %>
-    <div class="flex items-center justify-center w-[22px] h-[22px] bg-emerald-200 rounded-full">
+    <div class="flex items-center justify-center w-[22px] h-[22px] bg-emerald-200 rounded-lg">
       <p class="text-xs  text-emerald-800"><%= name %></p>
     </div>
   <% when :red %>
@@ -12,7 +12,7 @@
       <p class="text-xs font-medium text-red-800"><%= name %></p>
     </div>
   <% else %>
-    <div class="flex items-center justify-center w-[22px] h-[22px] bg-red-200 rounded-full">
+    <div class="flex items-center justify-center w-[22px] h-[22px] bg-amber-200 rounded-lg">
       <p class="text-xs font-medium text-red-800"><%= name %></p>
     </div>
 <% end %>

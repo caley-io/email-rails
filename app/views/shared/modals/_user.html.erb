@@ -1,66 +1,17 @@
-<div data-menu-target="userModal"
-     data-user-target="userModal"
-     class="hidden absolute bottom-16">
-  <div class="flex justify-center w-screen">
-    <div class="w-[500px] dark:bg-neutral-800/80 backdrop-filter backdrop-blur border border-neutral-200 dark:border-neutral-700/70 rounded-xl shadow-md">
-      <div class="">
-        <div class="p-0.5 border-b border-neutral-200 dark:border-neutral-700/70">
-          <div data-user-target="userModalItem"
-               data-action="click->menu#openUserSettingsModal"
-               class="flex items-center justify-between p-2 text-neutral-600 dark:text-neutral-400 hover:text-black hover:bg-neutral-200 dark:bg-neutral-700/50 dark:hover:bg-neutral-700/50 rounded-lg">
-            <div class="flex items-center gap-x-1.5">
-              <div class="flex items-center justify-center w-5 h-5 bg-black dark:bg-white rounded-full">
-                <p class="text-xs font-medium text-white dark:text-neutral-900"><%= current_user.first_name.first %></p>
-              </div>
-              <p class="text-xs font-medium"><%= current_user.full_name %></p>
-            </div>
-            <div>
-              <p class="text-xs font-medium text-neutral-500"><%= current_user.email_servers.count %> accounts</p>
-            </div>
-          </div>
-        </div>
-        <div class="p-0.5 border-b border-neutral-200 dark:border-neutral-700/70">
-          <div class="flex flex-col gap-y-0.5">
-            <% current_user.email_servers.each do |server| %>
-              <div data-user-target="userModalItem"
-                   class="flex items-center justify-between p-2 text-neutral-600 dark:text-neutral-400 hover:text-black hover:bg-neutral-200 dark:bg-neutral-700/50 dark:hover:bg-neutral-700/50 rounded-lg">
-                <div class="flex items-center gap-x-1.5">
-                  <div class="flex items-center justify-center w-5 h-5 bg-indigo-300 rounded-full">
-                    <p class="text-xs font-medium text-neutral-900"><%= server.email.first.capitalize %></p>
-                  </div>
-                  <p class="text-xs font-medium"><%= server.email %></p>
-                </div>
-                <div>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M12 5v.01m3.502.928-.005.01m2.57 2.554-.01.005m.948 3.497h-.01m-.928 3.502-.009-.005m-2.555 2.57-.005-.01M12 19v.01m-3.498-.947-.005.009m-2.555-2.57-.008.005m-.929-3.502h-.01m.947-3.498-.008-.005m2.568-2.555-.005-.008"></path>
-                  </svg>
-                </div>
-              </div>
-            <% end %>
-          </div>
-        </div>
-        <div class="flex flex-col gap-y-0.5 p-0.5">
-          <div data-user-target="userModalItem" class="px-2 py-2.5 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700/50 rounded-lg">
-            <div>
-              <p class="text-xs font-medium">Create workspace</p>
-            </div>
-          </div>
-          <div data-user-target="userModalItem"
-               class="px-2 py-2.5 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700/50 rounded-lg">
-            <div>
-              <p class="text-xs font-medium">Add account</p>
-            </div>
-          </div>
-          <%= button_to destroy_user_session_path, class: 'w-full', method: :delete do %>
-            <div data-user-target="userModalItem"
-                 class="logout-btn flex items-center justify-between px-2 py-2.5 hover:bg-red-200/20 dark:hover:bg-red-200/10 rounded-lg">
-              <div>
-                <p class="text-xs font-medium text-red-400 dark:text-red-200">Log out</p>
-              </div>
-            </div>
-          <% end %>
-        </div>
+<div data-user-dropdown-target="dropdown"
+     class="hidden absolute top-12 right-2 z-20">
+  <div class="flex justify-end w-screen">
+    <div data-root-target="user-settings" class="flex flex-col gap-y-0.5 p-0.5 dark:bg-neutral-800/80 backdrop-filter backdrop-blur border border-neutral-200 dark:border-neutral-700/70 rounded-xl shadow-md">
+      <div class="w-44 p-2 text-neutral-600 dark:text-neutral-400 hover:text-black hover:bg-neutral-200 dark:bg-neutral-700/50 dark:hover:bg-neutral-700/50 rounded-lg">
+        <p class="text-xs font-medium text-neutral-400 dark:text-neutral-200">Settings</p>
       </div>
+      <%= button_to destroy_user_session_path, class: 'w-full', method: :delete do %>
+        <div class="logout-btn flex items-center justify-between w-44 px-2 py-2.5 hover:bg-red-200/20 dark:hover:bg-red-200/10 rounded-lg">
+          <div>
+            <p class="text-xs font-medium text-red-400 dark:text-red-200">Log out</p>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
