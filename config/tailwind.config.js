@@ -12,7 +12,7 @@ module.exports = {
     extend: {
       backdropFilter: {
         'none': 'none',
-        'blur': 'blur(20px)',
+        'blur': 'blur(500px)',
       },
       boxShadow: {
         'xs': '0px 1px 2px 0px #1018280D'
