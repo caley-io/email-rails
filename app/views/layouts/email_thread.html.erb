@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Caley.to" %></title>
     <% if Rails.env.development? %>
       <%= favicon_link_tag 'dev-icon.png' %>
     <% else %>
       <%= favicon_link_tag 'logo-dark.png' %>
     <% end %>
+
+    <title><%= content_for(:title) || "Caley.to" %></title>
 
     <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -27,10 +28,8 @@
     <%= yield :head %>
   </head>
 
-  <body data-controller="theme"
-        data-theme-target="body">
-    <div data-controller="root"
-         class="min-h-screen dark:text-white bg-white dark:bg-background-dark">
+  <body data-controller="theme" data-theme-target="body">
+    <div data-controller="root" class="min-h-screen dark:text-white bg-white dark:bg-background-dark">
       <main class="min-h-screen">
         <%= yield %>
       </main>

@@ -10,16 +10,6 @@ class EmailThreadsControllerTest < ActionDispatch::IntegrationTest
     assert_response :ok
   end
 
-  test "reply_later" do
-    get reply_later_email_threads_path
-    assert_response :ok
-  end
-
-  test "all" do
-    get all_email_threads_path
-    assert_response :ok
-  end
-
   test "new" do
     get new_email_thread_path
     assert_response :ok

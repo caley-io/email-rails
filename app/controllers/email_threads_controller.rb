@@ -4,21 +4,10 @@ class EmailThreadsController < ApplicationController
 
   layout "email_thread", only: [ :new, :show ]
 
+  # TODO: Add filter for inbox, reply later, all
   def inbox
     # TODO: This is a temporary solution to retrieve the last 20 emails
     # TODO: Add a user setting to toggle email servers
-    @email_server = current_user.email_servers.first
-    @email_threads = @email_server.email_threads.includes(:messages)
-  end
-
-  def reply_later
-    # TODO: To be implemented later
-    @email_server = current_user.email_servers.first
-    @email_threads = @email_server.email_threads.includes(:messages)
-  end
-
-  def all
-    # TODO: To be implemented later
     @email_server = current_user.email_servers.first
     @email_threads = @email_server.email_threads.includes(:messages)
   end
