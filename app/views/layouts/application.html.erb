@@ -30,8 +30,8 @@
     <%= yield :head %>
   </head>
 
-  <body data-controller="theme" data-theme-target="body">
-    <div data-controller="root" class="min-h-screen dark:text-white bg-white dark:bg-background-dark">
+  <body>
+    <div data-controller="root" class="dark min-h-screen text-white bg-background-dark">
       <!-- TODO: Remove menu controller -->
       <div data-controller="menu">
         <%= render 'shared/command_palette' %>
