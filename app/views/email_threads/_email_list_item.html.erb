@@ -7,7 +7,7 @@
     <!-- <input type="checkbox" class="rounded bg-neutral-700 border border-neutral-600 opacity-0 group-hover:opacity-100"> -->
 
     <!-- TODO: We'll eventually set a random enum color for the placeholder when a user is created -->
-    <%= render "medium_profile_placeholder", color: :red, name: message.sender_name.first %>
+    <%= render "medium_profile_placeholder", color: [ "amber", "blue", "green", "purple", "red" ].sample.to_sym, name: message.sender_name.first %>
 
     <!-- TODO: Separate sender_name into first/last and truncate last -->
     <p class="w-40 text-slate-200"><%= message.sender_name %></p>

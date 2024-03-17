@@ -19,6 +19,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6, maximum: 128 }, on: :update, allow_blank: true
 
   before_save :postfix_email
+  before_create :set_profile_color
 
   # TODO: We probably want to normalize this to the DB with a create/update callback
   def full_name
@@ -27,14 +28,19 @@ class User < ApplicationRecord
 
   private
 
+  def postfix_email
+    self.email = "#{email}@caley.to" unless email.include?("@caley.to")
+  end
+
+  def set_profile_color
+    color = [ "amber", "blue", "green", "purple", "red" ].sample
+    self.profile_color = color
+  end
+
   def validate_email_format
     if email.include?("@")
       errors.add(:email, "must not include an '@' symbol followed by the domain name")
     end
-  end
-
-  def postfix_email
-    self.email = "#{email}@caley.to" unless email.include?("@caley.to")
   end
 end
 
@@ -47,6 +53,7 @@ end
 #  encrypted_password     :string           default(""), not null
 #  first_name             :string           not null
 #  last_name              :string           not null
+#  profile_color          :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
