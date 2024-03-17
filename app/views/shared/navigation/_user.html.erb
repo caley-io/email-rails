@@ -1,14 +1,14 @@
 <div data-user-dropdown-target="dropdown"
      class="hidden absolute top-12 right-2 z-20">
   <div class="flex justify-end w-screen">
-    <div data-root-target="user-settings" class="flex flex-col gap-y-0.5 p-0.5 dark:bg-neutral-800/80 backdrop-filter backdrop-blur border border-neutral-200 dark:border-neutral-700/70 rounded-xl shadow-md">
-      <div class="w-44 p-2 text-neutral-600 dark:text-neutral-400 hover:text-black hover:bg-neutral-200 dark:bg-neutral-700/50 dark:hover:bg-neutral-700/50 rounded-lg">
-        <p class="text-xs font-medium text-neutral-400 dark:text-neutral-200">Settings</p>
+    <div data-root-target="user-settings" class="flex flex-col gap-y-0.5 p-0.5 bg-neutral-800/80 backdrop-filter backdrop-blur border border-neutral-700/70 rounded-xl shadow-md">
+      <div class="w-44 p-2 text-neutral-400 bg-neutral-700/50 hover:bg-neutral-700/50 rounded-lg">
+        <p class="text-xs font-medium text-neutral-200">Settings</p>
       </div>
       <%= button_to destroy_user_session_path, class: 'w-full', method: :delete do %>
-        <div class="logout-btn flex items-center justify-between w-44 px-2 py-2.5 hover:bg-red-200/20 dark:hover:bg-red-200/10 rounded-lg">
+        <div class="logout-btn flex items-center justify-between w-44 px-2 py-2.5 hover:bg-red-200/10 rounded-lg">
           <div>
-            <p class="text-xs font-medium text-red-400 dark:text-red-200">Log out</p>
+            <p class="text-xs font-medium text-red-200">Log out</p>
           </div>
         </div>
       <% end %>

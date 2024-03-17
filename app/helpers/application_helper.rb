@@ -1,6 +1,6 @@
 module ApplicationHelper
   def active_page?(link_path)
-    current_page?(link_path) ? "bg-highlight-light dark:bg-highlight-dark dark:text-white" : ""
+    current_page?(link_path) ? "bg-highlight-dark text-white" : ""
   end
 
   # TODO: Add user setting for 24hr/12hr time format

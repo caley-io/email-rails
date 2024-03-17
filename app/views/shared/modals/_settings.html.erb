@@ -1,12 +1,12 @@
 <div data-menu-target="userSettingsModal" class="hidden absolute top-24">
   <div class="flex justify-center w-screen">
-    <div class="w-[900px] bg-white/60 dark:bg-neutral-800/90 backdrop-filter backdrop-blur border dark:border-neutral-700 rounded-2xl shadow-md">
-      <div class="flex items-center justify-between p-2 border-b border-neutral-200 dark:border-neutral-700">
+    <div class="w-[900px] bg-neutral-800/90 backdrop-filter backdrop-blur border border-neutral-700 rounded-2xl shadow-md">
+      <div class="flex items-center justify-between p-2 border-b border-neutral-700">
         <div class="ml-1">
           <p class="font-medium">Settings</p>
         </div>
         <div data-action="click->menu#closeUserSettingsModal"
-             class="flex items-center justify-center w-8 h-8 bg-neutral-200/70 hover:bg-neutral-200 dark:bg-neutral-700/50 hover:dark:bg-neutral-700 rounded-full">
+             class="flex items-center justify-center w-8 h-8 bg-neutral-700/50 hover:bg-neutral-700 rounded-full">
           <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.25 6.75L6.75 17.25"></path>
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.75 6.75L17.25 17.25"></path>
@@ -16,12 +16,12 @@
       <div class="grid grid-cols-10 min-h-[600px] overflow-y-scroll mt-3">
         <div class="col-span-2 px-1">
           <div class="flex flex-col gap-y-0.5 p-1">
-            <div data-search-target="searchItem" class="flex items-center justify-between p-2 text-neutral-600 dark:text-neutral-400 bg-neutral-200 dark:bg-neutral-700/50 dark:hover:bg-neutral-700/50 rounded-lg">
+            <div data-search-target="searchItem" class="flex items-center justify-between p-2 text-neutral-400 bg-neutral-700/50 hover:bg-neutral-700/50 rounded-lg">
               <div>
                 <p class="text-xs font-medium">User</p>
               </div>
             </div>
-            <div data-search-target="searchItem" class="flex items-center justify-between p-2 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700/50 rounded-lg">
+            <div data-search-target="searchItem" class="flex items-center justify-between p-2 text-neutral-400 hover:bg-neutral-700/50 rounded-lg">
               <div>
                 <p class="text-xs font-medium">Workspaces</p>
               </div>
@@ -35,7 +35,7 @@
           <div>
             <div class="mb-3 px-1">
               <h1 class="text-md font-medium">Theme</h1>
-              <p class="text-xs text-neutral-600 dark:text-neutral-400">Set your app theme</p>
+              <p class="text-xs text-neutral-400">Set your app theme</p>
             </div>
             <div data-controller="theme-buttons" class="flex gap-x-1">
               <div data-action="click->theme#setDarkTheme"

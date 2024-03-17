@@ -30,8 +30,8 @@
     <%= yield :head %>
   </head>
 
-  <body data-controller="theme" data-theme-target="body">
-    <div data-controller="root" class="min-h-screen dark:text-white bg-white dark:bg-background-dark">
+  <body>
+    <div data-controller="root" class="dark min-h-screen text-white bg-background-dark">
       <!-- TODO: Remove menu controller -->
       <div data-controller="menu">
         <%= render 'shared/command_palette' %>
@@ -39,12 +39,12 @@
         <%= render 'shared/modals/settings' %>
       </div>
 
-      <div class="fixed w-screen bg-white dark:bg-background-dark">
+      <div class="fixed w-screen bg-background-dark">
         <%= render 'shared/navbar' %>
         <%= render 'shared/toolbar' %>
       </div>
 
-      <main class="bg-white dark:bg-background-dark">
+      <main>
         <%= yield %>
       </main>
     </div>
