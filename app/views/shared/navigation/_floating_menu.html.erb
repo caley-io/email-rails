@@ -1,21 +1,21 @@
 <div class="fixed bottom-3">
   <div class="flex justify-center w-screen">
-    <div class="flex items-center gap-x-1 p-1 dark:bg-neutral-800/80 backdrop-filter backdrop-blur border border-neutral-200 dark:border-neutral-700 rounded-xl shadow-lg">
+    <div class="flex items-center gap-x-1 p-1 bg-neutral-800/80 backdrop-filter backdrop-blur border border-neutral-700 rounded-xl shadow-lg">
       <%= link_to root_path do %>
-        <div class="flex items-center justify-center w-8 h-8 text-neutral-400 hover:text-neutral-900 dark:hover:text-white rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-700 cursor-pointer">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400 hover:text-white rounded-lg hover:bg-neutral-700 cursor-pointer">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.75 10.75v4a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4v-4m-14 0v-1.5a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v1.5m-14 0h4m10 0h-4m-6 0h6m-6 0a1.5 1.5 0 0 0 1.5 1.5h3a1.5 1.5 0 0 0 1.5-1.5"></path>
           </svg>
         </div>
       <% end %>
       <div data-action="click->menu#toggleSearchModal"
-           class="flex items-center justify-center w-8 h-8 text-neutral-400 hover:text-neutral-900 dark:hover:text-white rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-700 cursor-pointer"
+           class="flex items-center justify-center w-8 h-8 text-neutral-400 hover:text-white rounded-lg hover:bg-neutral-700 cursor-pointer"
       >
         <svg width="22" height="22" fill="none" viewBox="0 0 24 24">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.25 19.25L15.5 15.5M4.75 11C4.75 7.54822 7.54822 4.75 11 4.75C14.4518 4.75 17.25 7.54822 17.25 11C17.25 14.4518 14.4518 17.25 11 17.25C7.54822 17.25 4.75 14.4518 4.75 11Z"></path>
         </svg>
       </div>
-      <div class="flex items-center justify-center w-8 h-8 text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded-lg cursor-pointer">
+      <div class="flex items-center justify-center w-8 h-8 text-neutral-400 hover:text-white hover:bg-neutral-700 rounded-lg cursor-pointer">
         <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 5.75V18.25"></path>
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.25 12L5.75 12"></path>
