@@ -2,3 +2,4 @@ bob:
   first_name: Bob
   last_name: Dylan
   email: bob@caley.io
+  profile_color: "amber"
