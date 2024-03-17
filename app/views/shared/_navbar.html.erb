@@ -14,7 +14,7 @@
   <div data-controller="user-dropdown">
     <div data-action="click->user-dropdown#toggleDropdown"
          class="flex items-center justify-center w-8 h-8 text-neutral-400 hover:text-white rounded-lg hover:bg-neutral-700 cursor-pointer">
-      <%= render 'medium_profile_placeholder', color: :yellow, name: current_user.first_name.first %>
+      <%= render 'medium_profile_placeholder', color: current_user.profile_color.to_sym, name: current_user.first_name.first %>
     </div>
     <%= render 'shared/navigation/user' %>
   </div>
