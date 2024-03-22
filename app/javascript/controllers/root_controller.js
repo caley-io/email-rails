@@ -7,11 +7,11 @@ export default class extends Controller {
     this.commandPaletteOpen =
     this.userSettingsModalOpen = false
 
-    this.filterIndex =
+    // this.filterIndex =
     this.listItemIndex =
     this.paletteItemIndex = 0
 
-    this.highlightFilter()
+    // this.highlightFilter()
     this.highlightListItem()
   }
 
@@ -42,12 +42,12 @@ export default class extends Controller {
     this.userSettingsModalOpen = state
   }
 
-  highlightFilter() {
-    this.filterTargets.forEach((filter, index) => {
-      filter.classList.toggle("text-white", index === this.filterIndex)
-      filter.classList.toggle("bg-neutral-700/50", index === this.filterIndex)
-    })
-  }
+  // highlightFilter() {
+  //   this.filterTargets.forEach((filter, index) => {
+  //     filter.classList.toggle("text-white", index === this.filterIndex)
+  //     filter.classList.toggle("bg-neutral-700/50", index === this.filterIndex)
+  //   })
+  // }
 
   highlightListItem() {
     this.listItemTargets.forEach((listItem, index) => {
@@ -55,13 +55,13 @@ export default class extends Controller {
     })
   }
 
-  nextFilter() {
-    this.filterIndex++
-    if (this.filterIndex >= this.filterTargets.length) {
-      this.filterIndex = 0
-    }
-    this.highlightFilter()
-  }
+  // nextFilter() {
+  //   this.filterIndex++
+  //   if (this.filterIndex >= this.filterTargets.length) {
+  //     this.filterIndex = 0
+  //   }
+  //   this.highlightFilter()
+  // }
 
   nextListItem() {
     this.listItemIndex++

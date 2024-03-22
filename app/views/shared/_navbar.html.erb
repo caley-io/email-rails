@@ -7,15 +7,9 @@
       </div>
       <%= render 'shared/navigation/user' %>
     </div>
-    <% @filters.each do |filter| %>
-      <div data-root-target="filter"
-          class="flex items-center h-8 px-3 hover:bg-neutral-200 hover:text-white hover:bg-neutral-700/50 backdrop-filter backdrop-blur rounded-lg">
-        <% if filter == 'Inbox' %>
-          <p class="text-xs font-medium"><%= filter %><span class="ml-1 text-sky-500"><%= @email_threads.count if filter == 'Inbox' %></span></p>
-        <% else %>
-          <p class="text-xs font-medium"><%= filter %></p>
-        <% end %>
-      </div>
-    <% end %>
+    <div data-root-target="filter"
+        class="flex items-center">
+      <p class="text-xs font-medium">Inbox<span class="ml-1 text-amber-500"><%= @email_threads.count %></span></p>
+    </div>
   </div>
 </nav>
