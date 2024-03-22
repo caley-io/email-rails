@@ -1,4 +1,4 @@
-<div class="flex h-screen divide-x divide-neutral-700 overflow-hidden">
+<div class="flex h-screen divide-x divide-neutral-700/40 overflow-hidden">
   <div class="flex-grow overflow-y-scroll">
     <div class="w-full bg-neutral-800">
       <%= render 'shared/navbar' %>
@@ -16,19 +16,22 @@
       <% end %>
     </div>
   </div>
-  <div class="flex flex-col lg:w-[400px] h-screen overflow-hidden shadow-xl">
-    <div class="flex items-center justify-between h-10 px-4 border-b border-neutral-700/40">
-      <div>
+  <div class="flex flex-col lg:w-[400px] h-screen overflow-hidden">
+    <div class="flex items-center justify-between h-[44px] pl-4 pr-2 border-b border-neutral-700/40">
+      <div class="flex items-center gap-x-1.5">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 4.75C15 7.51142 13.5114 10 10.75 10C13.5114 10 15 12.4886 15 15.25C15 12.4886 16.4886 10 19.25 10C16.4886 10 15 7.51142 15 4.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M8 12.75C8 14.4069 6.40685 16 4.75 16C6.40685 16 8 17.5931 8 19.25C8 17.5931 9.59315 16 11.25 16C9.59315 16 8 14.4069 8 12.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
         <p class="text-xs">Preview</p>
       </div>
-      <div>
-        <svg width="22" height="22" fill="none" viewBox="0 0 24 24">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.25 6.75L6.75 17.25"></path>
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.75 6.75L17.25 17.25"></path>
+      <div class="flex items-center justify-center w-7 h-7 text-neutral-400 hover:text-white hover:bg-neutral-700 rounded-lg rotate-180">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12.75 4.75h4.5a2 2 0 0 1 2 2v10.5a2 2 0 0 1-2 2h-4.5m-8-2V6.75a2 2 0 0 1 2-2h2.5v14.5h-2.5a2 2 0 0 1-2-2Z"></path>
         </svg>
       </div>
     </div>
-    <div class="flex items-center h-10 px-4 border-b border-neutral-700/40">
+    <div class="flex items-center h-[44px] px-4 border-b border-neutral-700/40">
       <div class="flex items-center gap-x-1.5">
         <div class="flex items-center justify-center w-5 h-5 rounded-md bg-red-200 text-red-800 text-xs">S</div>
         <p class="text-xs">Suzan Corkery</p>
@@ -41,17 +44,9 @@
             <p class="text-xs font-medium">Email summary</p>
           </div>
           <div>
-            <p class="text-sm text-neutral-400">Susan is excited to try Caley. She needs to know how large of a team Caley can support, and the best way to quickly create an account. She's also interested in discussing discounts for large teams.</p>
+            <p class="text-sm">Susan is excited to try Caley. She needs to know how large of a team Caley can support, and the best way to quickly create an account. She's also interested in discussing discounts for large teams.</p>
           </div>
         </div>
-        <!-- <div class="space-y-2 p-4 border-b border-neutral-700/40">
-          <div>
-            <p class="text-xs font-medium">Takeaway</p>
-          </div>
-          <div>
-            <p class="text-sm text-neutral-400">Susan is not clear if there is a limit to team size</p>
-          </div>
-        </div> -->
         <div class="space-y-2 p-4 overflow-y-scroll">
           <div>
             <p class="text-xs font-medium">Todo</p>
@@ -115,6 +110,10 @@
             <div class="flex items-center gap-x-1.5">
               <div class="flex items-center justify-center w-5 h-5 text-xs rounded-md bg-neutral-700">d</div>
               <p class="text-sm text-neutral-400">Delete</p>
+            </div>
+            <div class="flex items-center gap-x-1.5">
+              <div class="flex items-center justify-center w-5 h-5 text-xs rounded-md bg-neutral-700">/</div>
+              <p class="text-sm text-neutral-400">Search</p>
             </div>
           </div>
         </div>
