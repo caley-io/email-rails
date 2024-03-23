@@ -4,7 +4,6 @@ class EmailThreadsController < ApplicationController
   before_action :authenticate_user!
   # before_action :initialize_filters
 
-
   # TODO: Add filter for inbox, reply later, all
   def inbox
     # TODO: This is a temporary solution to retrieve the last 20 emails
