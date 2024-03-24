@@ -50,8 +50,8 @@ export default class extends Controller {
   // }
 
   highlightListItem() {
-    this.listItemTargets.forEach((listItem, index) => {
-      listItem.classList.toggle("bg-neutral-700/10", index === this.listItemIndex)
+    this.listItemTargets.forEach((element, idx) => {
+      element.setAttribute('aria-selected', idx === this.listItemIndex)
     })
   }
 
