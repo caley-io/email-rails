@@ -1,15 +1,25 @@
-<nav class="flex items-center justify-between w-full h-[44px] px-1 border-b border-neutral-700/40">
-  <div class="flex items-center gap-x-1">
+<nav class="flex items-center justify-between w-full h-10">
+  <div class="flex-grow flex items-center">
     <div data-controller="user-dropdown">
-      <div data-action="click->user-dropdown#toggleDropdown"
-          class="flex items-center justify-center w-8 h-8 text-neutral-400 hover:text-white rounded-lg hover:bg-neutral-700 cursor-pointer">
-        <%= render 'medium_profile_placeholder', color: current_user.profile_color.to_sym, name: current_user.first_name.first %>
+      <div class="flex items-center justify-center h-10 px-1 border-b border-neutral-800/70">
+        <div data-action="click->user-dropdown#toggleDropdown"
+            class="flex items-center justify-center w-8 h-8 text-neutral-400 hover:text-white rounded-lg hover:bg-neutral-700 cursor-pointer">
+          <%= render 'medium_profile_placeholder', color: current_user.profile_color.to_sym, name: current_user.first_name.first %>
+        </div>
+        <%= render 'shared/navigation/user' %>
       </div>
-      <%= render 'shared/navigation/user' %>
     </div>
-    <div data-root-target="filter"
-        class="flex items-center">
-      <p class="text-xs font-medium">Inbox<span class="ml-1 text-amber-500"><%= @email_threads.count %></span></p>
+    <div class="flex items-center gap-x-1 h-10 px-4 bg-[#0E0F0F] border-x border-neutral-800/50">
+      <div data-root-target="filter"
+          class="flex items-center">
+        <p class="text-xs font-medium">Inbox<span class="ml-1 text-amber-500"><%= @email_threads.count %></span></p>
+      </div>
+    </div>
+    <div class="flex-grow h-10 border-b border-neutral-800/70">
+  </div>
+  <div class="flex items-center justify-center h-10 px-1 border-b border-neutral-800/70">
+    <div class="flex items-center justify-center w-7 h-7 text-neutral-400 hover:text-white hover:bg-neutral-700 rounded-lg rotate-180">
+      <%= render 'shared/icons/preview_toggle' %>
     </div>
   </div>
 </nav>

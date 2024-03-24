@@ -51,7 +51,7 @@ export default class extends Controller {
 
   highlightListItem() {
     this.listItemTargets.forEach((listItem, index) => {
-      listItem.classList.toggle("bg-neutral-700/50", index === this.listItemIndex)
+      listItem.classList.toggle("bg-neutral-700/10", index === this.listItemIndex)
     })
   }
 
